@@ -78,14 +78,14 @@
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                <a href="" class="dropdown-item">Admin</a>
-                                {% endif %}
-                                <a href="" class="dropdown-item">Profile</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            {% if request.user.is_superuser %}
+                            <a href="" class="dropdown-item">Admin</a>
+                            {% endif %}
+                            <a href="" class="dropdown-item">Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Signup!</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Signup!</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                             {% endif %}
                         </div>
                     </li>
@@ -95,15 +95,29 @@
                                 <div><i class="fas fa-shopping-bag"></i></div>
                                 <p class="my-0">
                                     {% if grand_total %}
-                                        ${{ grand_total | floatformat:2 }}
+                                    ${{ grand_total | floatformat:2 }}
                                     {% else %}
-                                        £0.00
+                                    £0.00
                                     {% endif %}
                                 </p>
                             </div>
                         </a>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <div class="row bg-white">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                {% include 'includes/mobile-top-header.html' %}
+                {% include 'includes/main-nav.html' %}
+            </nav>
+        </div>
+        <div id="delivery-banner" class="row text-center">
+            <div class="col bg-black text-white">
+                <h4 class="logo-font my-1">Free UK delivery on orders over ${{ free_shipping_threshold }}!</h4>
             </div>
         </div>
     </header>
