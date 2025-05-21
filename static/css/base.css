@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('media/homepage_background_cropped.jpg') no-repeat center center fixed;
+    background: url('C:\Users\bolak\code\bbe_store\media\homepage_background_cropped.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #FDFBED;
@@ -21,7 +21,6 @@ body {
 
 .logo-font {
     text-transform: uppercase;
-    /* color: #D1AC00; */
 }
 
 .main-logo-link {
@@ -45,7 +44,7 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
+    background: goldenrod;
     color: #FDFBED;
 }
 

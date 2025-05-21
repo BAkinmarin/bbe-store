@@ -6,7 +6,8 @@ body {
     background: url('media/homepage_background_cropped.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
-    color: #FDFBED;
+    /* color: #FDFBED; */
+    color: goldenrod;
     font-family: 'Lato';
 }
 
@@ -21,7 +22,7 @@ body {
 
 .logo-font {
     text-transform: uppercase;
-    color: #D1AC00;
+    /* color: #D1AC00; */
 }
 
 .main-logo-link {
@@ -30,13 +31,15 @@ body {
 
 .shop-now-button {
     background: #0C1618;
-    color: #FDFBED;
+    /* color: #FDFBED; */
+    color: goldenrod;
     min-width: 260px;
 }
 
 .btn-black {
     background: #0C1618;
-    color: #FDFBED;
+    /* color: #FDFBED; */
+    color: goldenrod;
 }
 
 .shop-now-button:hover,
@@ -46,7 +49,8 @@ body {
 .btn-black:active,
 .btn-black:focus {
     background: #222;
-    color: #FDFBED;
+    /* color: #FDFBED; */
+    color: goldenrod;
 }
 
 .text-black {
@@ -55,6 +59,10 @@ body {
 
 .border-black {
     border: 1px solid #0C1618 !important;
+}
+
+.bg-black {
+    background: #000 !important;
 }
 
 /* -------------------------------- Media Queries */
