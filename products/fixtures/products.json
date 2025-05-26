@@ -9,6 +9,7 @@
       "price": 25.21,
       "category": 1,
       "rating": 5,
+      "reviews": [],
       "image_url": "http://s7d9.scene7.com/is/image/JCPenney/DP0709201205510679M.tif?hei=380&amp;wid=380&op_usm=.4,.8,0,0&resmode=sharp2&op_usm=1.5,.8,0,0&resmode=sharp",
       "image": "DP0709201205510679M.jpg"
     }
@@ -19,12 +20,13 @@
     "fields": {
       "sku": "van001",
       "name": "Whipped Vanilla Body Butter",
-      "description": "Our Whipped Vanilla Body Butter is softening, moisturising, easily absorbed into the skin without leaving a greasy residue and is suitable for most skin types.\" Delicatelyy scented using distilled vanilla extract from high grade Madagascan Vanilla Pods, our hand whipped Vanilla Body Butter gives off a subtle, sweet and creamy vanilla aroma that lingers on the skin but is not too overpowering and is currently our #1 Bestseller.",
+      "description": "Our Whipped Vanilla Body Butter is softening, moisturising, easily absorbed into the skin without leaving a greasy residue and is suitable for most skin types. Delicately scented using distilled vanilla extract from high grade Madagascan Vanilla Pods, our hand whipped Vanilla Body Butter gives off a subtle, sweet and creamy vanilla aroma that lingers on the skin but is not too overpowering and is currently our #1 Bestseller.",
       "price": 26.20,
       "category": 1,
       "rating": 5,
-      "image_url": "http://s7d9.scene7.com/is/image/JCPenney/DP0113201617034987M.tif?hei=380&amp;wid=380&op_usm=.4,.8,0,0&resmode=sharp2&op_usm=1.5,.8,0,0&resmode=sharp",
-      "image": "DP0113201617034987M.jpg"
+      "reviews": [],
+      "image_url": "",
+      "image": "media/vanilla-butter-wooden-block.JPEG"
     }
   },
   {
@@ -37,8 +39,9 @@
       "price": 22.41,
       "category": 1,
       "rating": 4.9,
-      "image_url": "http://s7d9.scene7.com/is/image/JCPenney/DP1230201417013175M.tif?hei=380&amp;wid=380&op_usm=.4,.8,0,0&resmode=sharp2&op_usm=1.5,.8,0,0&resmode=sharp",
-      "image": "DP1230201417013175M.jpg"
+      "reviews": [],
+      "image_url": "",
+      "image": ""
     }
   },
   {
@@ -51,8 +54,9 @@
       "price": 26.40,
       "category": 1,
       "rating": 4.8,
-      "image_url": "http://s7d9.scene7.com/is/image/JCPenney/DP0716201503423610M.tif?hei=380&amp;wid=380&op_usm=.4,.8,0,0&resmode=sharp2&op_usm=1.5,.8,0,0&resmode=sharp",
-      "image": "DP0716201503423610M.jpg"
+      "reviews": [],
+      "image_url": "",
+      "image": ""
     }
   }
 ]
