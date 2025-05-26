@@ -35,7 +35,7 @@
     "pk": 5,
     "model": "products.category",
     "fields": {
-      "name": "new_arrivals",
+      "name": "newarrivals",
       "friendly_name": "New Arrivals"
     }
   }
