@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 
 
 class Category(models.Model):
@@ -29,3 +30,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def average_rating(self):
+        return self.reviews.aggregate(avg_rating=Avg('rating'))['avg_rating'] or 0
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    rating = models.DecimalField(max_digits=3, decimal_places=2)
+    user = models.TextField()
+    comment = models.TextField()
