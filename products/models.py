@@ -36,7 +36,7 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='reviews')
     rating = models.DecimalField(max_digits=3, decimal_places=2)
     user = models.TextField()
     comment = models.TextField()
