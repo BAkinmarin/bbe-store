@@ -3,8 +3,10 @@ html {
 }
 
 body {
-    background: url('C:\Users\bolak\code\bbe_store\media\homepage_background_cropped.jpg') no-repeat center center fixed;
-    background-size: cover;
+    /* background: url('/media/BBE Etsy Banner - Beige Background.png') no-repeat center center fixed; */
+    background: url('/media/BBE Etsy Banner - Beige Background.png') no-repeat center top fixed;
+    /* background-size: cover; */
+    background-size: contain;
     height: calc(100vh - 164px);
     color: #0C1618;
     font-family: 'Lato';
