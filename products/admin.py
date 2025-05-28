@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, Review
 
 
 # Register your models here.
@@ -10,12 +10,13 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'category',
         'price',
-        'rating',
-        'reviews',
+        'aggregate_rating',
+        'reviews_count',
         'image',
     )
 
-    ordering = ('rating',)
+    # Order by highest-rated products
+    ordering = ["-aggregate_rating"]
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -25,5 +26,15 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        'customer_name',
+        'product',
+        'rating',
+        'review_date',
+    )
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Review, ReviewAdmin)

@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block page_header %}
@@ -15,8 +14,6 @@
     <div class="row">
         <div class="col">
             {{ products }}
-
-            <p>Average Rating: {{ product.average_rating | floatformat:1 }}/5</p>
         </div>
     </div>
 </div>
