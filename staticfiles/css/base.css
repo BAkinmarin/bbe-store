@@ -3,8 +3,10 @@ html {
 }
 
 body {
-    /* background: url('C:\Users\bolak\code\bbe_store\media\homepage_background_cropped.jpg') no-repeat center center fixed; */
-    background-size: cover;
+    /* background: url('/media/BBE Etsy Banner - Beige Background.png') no-repeat center top fixed; */
+    /* background: url('/media/Vanilla Butter - Sunset.JPEG') no-repeat center center fixed;
+    /* background-size: cover; */
+    background: rgb(248, 196, 64);
     height: calc(100vh - 164px);
     color: #0C1618;
     font-family: 'Lato';
@@ -44,8 +46,9 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: goldenrod;
-    color: #FDFBED;
+    background-color: #FDFBED;
+    color: #0C1618;
+    opacity: 0.7;
 }
 
 .text-black {
@@ -56,8 +59,21 @@ body {
     border: 1px solid #0C1618 !important;
 }
 
+.bg-gold {
+    /* background: goldenrod !important; */
+    background: rgb(248, 196, 64) !important;
+}
+
 .bg-black {
     background: #000 !important;
+}
+
+.my-0 {
+    color: #000;
+}
+
+.fa-shopping-bag:before {
+    color: #000;
 }
 
 /* -------------------------------- Media Queries */
