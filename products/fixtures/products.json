@@ -9,8 +9,8 @@
       "price": 25.21,
       "category": 1,
       "aggregate_rating": 5.0,
-      "image_url": "http://s7d9.scene7.com/is/image/JCPenney/DP0709201205510679M.tif?hei=380&amp;wid=380&op_usm=.4,.8,0,0&resmode=sharp2&op_usm=1.5,.8,0,0&resmode=sharp",
-      "image": "DP0709201205510679M.jpg"
+      "image_url": "",
+      "image": "vanilla-butter-sunset.JPEG"
     }
   },
   {
@@ -21,9 +21,9 @@
       "name": "Whipped Vanilla Body Butter",
       "description": "Our Whipped Vanilla Body Butter is softening, moisturising, easily absorbed into the skin without leaving a greasy residue and is suitable for most skin types. Delicately scented using distilled vanilla extract from high grade Madagascan Vanilla Pods, our hand whipped Vanilla Body Butter gives off a subtle, sweet and creamy vanilla aroma that lingers on the skin but is not too overpowering and is currently our #1 Bestseller.",
       "price": 26.20,
-      "category": 2,
+      "category": 1,
       "aggregate_rating": 5.0,
-      "image_url": "http://s7d9.scene7.com/is/image/JCPenney/DP0709201205510679M.tif?hei=380&amp;wid=380&op_usm=.4,.8,0,0&resmode=sharp2&op_usm=1.5,.8,0,0&resmode=sharp",
+      "image_url": "",
       "image": "vanilla-butter-wooden-block.JPEG"
     }
   },
@@ -36,8 +36,8 @@
       "description": "Our Whipped Baby Body Butter is nourishing, softening and easily absorbed into the skin without leaving a greasy residue. Suitable for all skin types including sensitive skin and infants under 3 years. The perfect gift for expecting mothers!",
       "price": 22.41,
       "category": 1,
-      "aggregate_rating": 5.0,
-      "image_url": "http://s7d9.scene7.com/is/image/JCPenney/DP0709201205510679M.tif?hei=380&amp;wid=380&op_usm=.4,.8,0,0&resmode=sharp2&op_usm=1.5,.8,0,0&resmode=sharp",
+      "aggregate_rating": 4.9,
+      "image_url": "",
       "image": "vanilla-butter-sunset.JPEG"
     }
   },
@@ -51,8 +51,22 @@
       "price": 26.40,
       "category": 1,
       "aggregate_rating": 5.0,
-      "image_url": "http://s7d9.scene7.com/is/image/JCPenney/DP0709201205510679M.tif?hei=380&amp;wid=380&op_usm=.4,.8,0,0&resmode=sharp2&op_usm=1.5,.8,0,0&resmode=sharp",
+      "image_url": "",
       "image": "vanilla-butter-sunset.JPEG"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.product",
+    "fields": {
+      "sku": "h2t001",
+      "name": "Whipped Head-to-Toe Body Butter",
+      "description": "Our Whipped Head-to-Toe Body Butter is an all-rounder! It is suitable for face and body and can be applied all year round. Our H2T Body Butter smells absolutely gorgeous - if we do say so ourselves - and, as with any of our body butters, a little goes a lonnnnnnnng way. It is super hydrating, easily absorbed into the skin and leaves the skin with a healthy glow.\" Delicately scented using organic lavender, ylang ylang and sandalwood oils, our hand Whipped H2T Body Butter gives off a calming, floral aroma that lingers on the skin but is not too overpowering.",
+      "price": 30.99,
+      "category": 5,
+      "aggregate_rating": 5.0,
+      "image_url": "",
+      "image": "head-to-toe-butter-block.JPEG"
     }
   }
 ]
