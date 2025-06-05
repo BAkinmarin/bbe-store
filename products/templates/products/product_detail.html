@@ -40,11 +40,18 @@
         </div>
         <div class="col-12 col-md-6 col-lg-4">
             <div class="product-details-container mb-5 mt-md-5">
-                {% if product.review %}
+                <!-- {% if product.review %}
                 <p class="mt-3">{{ product.review }}</p>
                 {% else %}
                 <small class="text-muted">No Reviews</small>
-                {% endif %}
+                {% endif %} -->
+                {% for review in reviews %}
+                <li>
+                    <strong>{{ review.customer_name }}</strong> ({{ review.rating }} / 5)
+                    <p>{{ review.review_text }}</p>
+                    <small>Reviewed on: {{ review.date }}</small>
+                </li>
+                {% endfor %}
             </div>
         </div>
     </div>

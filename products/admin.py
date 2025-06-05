@@ -35,6 +35,17 @@ class ReviewAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        'customer_name',
+        'product',
+        'rating',
+        'is_verified',
+    )
+    actions = ["mark_verified"]
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Review, ReviewAdmin)
