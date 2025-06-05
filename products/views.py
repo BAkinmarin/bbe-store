@@ -23,8 +23,14 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
+    # Fetch reviews if any
+    reviews = product.reviews.all()
+    has_reviews = reviews.exists()
+
     context = {
         'product': product,
+        'reviews': reviews,
+        'has_reviews': has_reviews,
     }
 
     return render(request, 'products/products.html', context)

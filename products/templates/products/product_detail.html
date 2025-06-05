@@ -45,13 +45,21 @@
                 {% else %}
                 <small class="text-muted">No Reviews</small>
                 {% endif %} -->
-                {% for review in reviews %}
-                <li>
-                    <strong>{{ review.customer_name }}</strong> ({{ review.rating }} / 5)
-                    <p>{{ review.review_text }}</p>
-                    <small>Reviewed on: {{ review.date }}</small>
-                </li>
-                {% endfor %}
+                <h3>Customer Reviews</h3>
+                {% if has_reviews %}
+                <ul>
+                    {% for review in reviews %}
+                    <li>
+                        <strong>{{ review.customer_name }}</strong> ({{ review.rating }} / 5)
+                        <p>{{ review.review_text }}</p>
+                        <small>Reviewed on: {{ review.date }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No reviews yet. Be the first to review this product!</p>
+                {% endif %}
+                <a href="{% url 'submit_product_review' product.id %}">Leave a Review</a>
             </div>
         </div>
     </div>
