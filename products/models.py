@@ -34,28 +34,34 @@ class Product(models.Model):
 
     @property
     def reviews_count(self):
-        return self.reviews.count()
+        return self.reviews.count()  # type: ignore
 
     @property
     def update_aggregate_rating(self):
-        avg_rating = self.reviews.aggregate(models.Avg('rating'))['rating__avg']
+        avg_rating = self.reviews.aggregate(models.Avg('rating'))['rating__avg'] # type: ignore
         self.aggregate_rating = avg_rating if avg_rating else 0.0
         self.save()
+
+
+# class Order(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     products = models.ManyToManyField(Product)
+#     order_date = models.DateTimeField(auto_now_add=True)
 
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
     customer_name = models.CharField(max_length=254)
-    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
+    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])  # type: ignore
     review_text = models.TextField()
     review_date = models.DateField(auto_now_add=True)
 
     # Link customer review to a customer order for verification
-    order = models.ForeignKey("orders.Order", null=True, blank=True, on_delete=models.SET_NULL)
+    # order = models.ForeignKey("orders.Order", null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return f"{self.customer_name} - {self.product.name} ({self.rating} / 5)"
+        return f"{self.customer_name} - {self.product.name} ({self.rating}/5)"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self.product.update_aggregate_rating()
+        self.product.update_aggregate_rating()  # type: ignore
