@@ -64,7 +64,7 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     # Fetch reviews if any
-    reviews = product.reviews.all()  # type: ignore
+    reviews = product.reviews.all()
     has_reviews = reviews.exists()
 
     context = {
@@ -92,6 +92,6 @@ def submit_product_review(request, product_id):
         review.customer_name = request.user.username
         # review.order = user_orders.first()
         review.save()
-        return redirect("product_detail", product_id=product.id)  # type: ignore
+        return redirect("product_detail", product_id=product.id)
 
     return render(request, "submit_product_review.html", {"product": product, "form": form})

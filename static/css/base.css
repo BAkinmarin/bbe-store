@@ -3,8 +3,6 @@ html {
 }
 
 body {
-    /* image: url('/media/Vanilla Butter - Sunset.JPEG') no-repeat center center fixed; */
-    /* background-size: cover; */
     background: rgb(248, 196, 64);
     height: calc(100vh - 164px);
     color: #0C1618;

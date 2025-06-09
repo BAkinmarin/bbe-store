@@ -34,11 +34,11 @@ class Product(models.Model):
 
     @property
     def reviews_count(self):
-        return self.reviews.count()  # type: ignore
+        return self.reviews.count()
 
     @property
     def update_aggregate_rating(self):
-        avg_rating = self.reviews.aggregate(models.Avg('rating'))['rating__avg']  # type: ignore
+        avg_rating = self.reviews.aggregate(models.Avg('rating'))['rating__avg']
         self.aggregate_rating = avg_rating if avg_rating else 0.0
         self.save()
 
@@ -52,7 +52,7 @@ class Product(models.Model):
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
     customer_name = models.CharField(max_length=254)
-    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])  # type: ignore
+    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     review_text = models.TextField()
     review_date = models.DateField(auto_now_add=True)
 
@@ -64,4 +64,4 @@ class Review(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self.product.update_aggregate_rating()  # type: ignore
+        self.product.update_aggregate_rating()  : ignore
