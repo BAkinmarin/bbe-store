@@ -17,10 +17,10 @@
                 Bath Salts
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="bath-salts-link">
-                <a href="" class="dropdown-item">Sea Salt</a>
-                <a href="" class="dropdown-item">Epsom Salt</a>
-                <a href="" class="dropdown-item">Organic Salt</a>
-                <a href="" class="dropdown-item">All Bath Salts</a>
+                <a href="{% url 'products' %}?category=sea_salt" class="dropdown-item">Sea Salt</a>
+                <a href="{% url 'products' %}?category=epsom_salt" class="dropdown-item">Epsom Salt</a>
+                <a href="{% url 'products' %}?category=organic_salt" class="dropdown-item">Organic Salt</a>
+                <a href="{% url 'products' %}?category=sea_salt,epsom_salt,organic_salt" class="dropdown-item">All Bath Salts</a>
             </div>
         </li>
 
@@ -29,10 +29,10 @@
                 Body Scrubs
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="body-scrubs-link">
-                <a href="" class="dropdown-item">Daily</a>
-                <a href="" class="dropdown-item">Moisturising</a>
-                <a href="" class="dropdown-item">Blemish-Prone</a>
-                <a href="" class="dropdown-item">All Body Scrubs</a>
+                <a href="{% url 'products' %}?category=daily" class="dropdown-item">Daily</a>
+                <a href="{% url 'products' %}?category=moisturising" class="dropdown-item">Moisturising</a>
+                <a href="{% url 'products' %}?category=blemish_prone" class="dropdown-item">Blemish-Prone</a>
+                <a href="{% url 'products' %}?category=daily,moisturising,blemish_prone" class="dropdown-item">All Body Scrubs</a>
             </div>
         </li>
 
@@ -41,10 +41,10 @@
                 Face Butters
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="face-butters-link">
-                <a href="" class="dropdown-item">Soothing</a>
-                <a href="" class="dropdown-item">Brightening</a>
-                <a href="" class="dropdown-item">Moisturising</a>
-                <a href="" class="dropdown-item">All Face Butters</a>
+                <a href="{% url 'products' %}?category=soothing" class="dropdown-item">Soothing</a>
+                <a href="{% url 'products' %}?category=brightening" class="dropdown-item">Brightening</a>
+                <a href="{% url 'products' %}?category=moisturising" class="dropdown-item">Moisturising</a>
+                <a href="{% url 'products' %}?category=soothing,brightening,moisturising" class="dropdown-item">All Face Butters</a>
             </div>
         </li>
 
@@ -53,10 +53,11 @@
                 Body Butters
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="body-butters-link">
-                <a href="" class="dropdown-item">Normal</a>
-                <a href="" class="dropdown-item">Sensitive</a>
-                <a href="" class="dropdown-item">Blemish-Prone</a>
-                <a href="" class="dropdown-item">All Skin Types</a>
+                <a href="{% url 'products' %}?category=dry" class="dropdown-item">Dry</a>
+                <a href="{% url 'products' %}?category=normal" class="dropdown-item">Normal</a>
+                <a href="{% url 'products' %}?category=sensitive" class="dropdown-item">Sensitive</a>
+                <a href="{% url 'products' %}?category=bemish_prone" class="dropdown-item">Blemish-Prone</a>
+                <a href="{% url 'products' %}?category=dry,normal,sensitive,blemish_prone" class="dropdown-item">All Skin Types</a>
             </div>
         </li>
 
@@ -65,11 +66,11 @@
                 New Arrivals
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="new-arrivals-link">
-                <a href="" class="dropdown-item">Bath Salts</a>
-                <a href="" class="dropdown-item">Body Scrubs</a>
-                <a href="" class="dropdown-item">Face Butters</a>
-                <a href="" class="dropdown-item">Body Butters</a>
-                <a href="" class="dropdown-item">All New Arrivals</a>
+                <a href="{% url 'products' %}?category=bath_salts" class="dropdown-item">Bath Salts</a>
+                <a href="{% url 'products' %}?category=body_scrubs" class="dropdown-item">Body Scrubs</a>
+                <a href="{% url 'products' %}?category=face_butters" class="dropdown-item">Face Butters</a>
+                <a href="{% url 'products' %}?category=body_butters" class="dropdown-item">Body Butters</a>
+                <a href="{% url 'products' %}?category=bath_salts,body_scrubs,face_butters,body_butters" class="dropdown-item">All New Arrivals</a>
             </div>
         </li>
     </ul>
