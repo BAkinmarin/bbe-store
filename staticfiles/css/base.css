@@ -3,10 +3,10 @@ html {
 }
 
 body {
-    /* background: url('/media/BBE Etsy Banner - Beige Background.png') no-repeat center top fixed; */
-    /* background: url('/media/Vanilla Butter - Sunset.JPEG') no-repeat center center fixed;
-    /* background-size: cover; */
-    background: rgb(248, 196, 64);
+    background: url('media/bbe-logo-white-background.png') no-repeat center center fixed;
+    /* background: url('/media/Vanilla Butter - Sunset.JPEG') no-repeat center center fixed; */
+    background-size: cover;
+    /* background: rgb(248, 196, 64); */
     height: calc(100vh - 164px);
     color: #0C1618;
 }
