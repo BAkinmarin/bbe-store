@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
+from django.db.models import Q
 from .forms import ReviewForm
+from .models import Product
+
 
 # Create your views here.
 
@@ -10,9 +12,22 @@ def all_products(request):
     """ A view to display all products with search and sort functionality """
 
     products = Product.objects.all()
+    query = None
+
+    # Search functionality - inspired by Code Institute's Boutique Ado walkthrough
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "Please enter a search criteria!")
+                return redirect (reverse('products'))
+
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            products = products.filter(queries)
 
     context = {
         'products': products,
+        'search_term': query,
     }
 
     return render(request, 'products/products.html', context)
