@@ -3,7 +3,9 @@ html {
 }
 
 body {
-    background: rgb(248, 196, 64);
+    /* background: rgb(248, 196, 64); */
+    background: url("/media/bbe-shea-in-pot.JPEG") no-repeat center top fixed;
+    background-size: cover;
     height: calc(100vh - 164px);
     color: #0C1618;
 }
@@ -29,6 +31,7 @@ body {
     background: #0C1618;
     color: #FDFBED;
     min-width: 260px;
+    font-size: larger;
 }
 
 .btn-black {
@@ -51,6 +54,11 @@ body {
     color: #000 !important;
 }
 
+.text-white {
+    color: #FDFBED !important;
+    font-weight: 400;
+}
+
 .border-black {
     border: 1px solid #0C1618 !important;
 }
@@ -63,6 +71,16 @@ body {
     background: #000 !important;
 }
 
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: rgb(248, 196, 64);
+	z-index: -1;
+}
+
 .my-0 {
     color: #000;
 }
@@ -70,6 +88,12 @@ body {
 .fa-shopping-bag:before {
     color: #000;
 }
+
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #000 !important;
+}
+
 
 /* -------------------------------- Media Queries */
 

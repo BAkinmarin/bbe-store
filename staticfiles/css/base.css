@@ -3,10 +3,9 @@ html {
 }
 
 body {
-    background: url('media/bbe-logo-white-background.png') no-repeat center center fixed;
-    /* background: url('/media/Vanilla Butter - Sunset.JPEG') no-repeat center center fixed; */
-    background-size: cover;
     /* background: rgb(248, 196, 64); */
+    background: url("media/BBE-shea-in-pot.JPEG") no-repeat center top fixed;
+    background-size: cover;
     height: calc(100vh - 164px);
     color: #0C1618;
 }
@@ -64,6 +63,16 @@ body {
 
 .bg-black {
     background: #000 !important;
+}
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: rgb(248, 196, 64);
+	z-index: -1;
 }
 
 .my-0 {
