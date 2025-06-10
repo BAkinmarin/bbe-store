@@ -19,7 +19,6 @@
                 <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.friendly_name }}</span>
             </a>
             {% endfor %}
-            <hr class="w-50 mb-1">
         </div>
     </div>
     <div class="row">
@@ -45,7 +44,7 @@
                         {% if search_term or current_categories or current_sorting != 'None-None' %}
                         <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
                         {% endif %}
-                        {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}</strong>{% endif %}
+                        {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                     </p>
                 </div>
                 <div class="row">
@@ -54,13 +53,11 @@
                         <div class="card h-100 border-0">
                             {% if product.image %}
                             <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid" src="{{ product.image.url }}"
-                                    alt="{{ product.name }}">
+                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                             </a>
                             {% else %}
                             <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
-                                    alt="{{ product.name }}">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                             </a>
                             {% endif %}
                             <div class="card-body pb-0">
@@ -72,8 +69,7 @@
                                         <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                                         {% if product.category %}
                                         <p class="small mt-1 mb-0">
-                                            <a href="{% url 'products' %}?category={{ product.category.name }}"
-                                                class="text-muted">
+                                            <a href="{% url 'products' %}?category={{ product.category.name }}" class="text-muted">
                                                 <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
                                             </a>
                                         </p>
@@ -113,4 +109,5 @@
             </div>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
