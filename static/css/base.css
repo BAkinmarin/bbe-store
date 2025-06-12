@@ -89,10 +89,10 @@ body {
     color: #000;
 }
 
-a.category-badge > span.badge:hover {
+/* a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #000 !important;
-}
+} */
 
 
 /* -------------------------------- Media Queries */
