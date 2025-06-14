@@ -26,8 +26,8 @@ class Product(models.Model):
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
-    # Dynamically update the aggregate rating whenever a new review is added
-    aggregate_rating = models.FloatField(default=0.0)
+    # Dynamically update the rating whenever a new review is added
+    rating = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -37,9 +37,9 @@ class Product(models.Model):
         return self.reviews.count()
 
     @property
-    def update_aggregate_rating(self):
+    def update_rating(self):
         avg_rating = self.reviews.aggregate(models.Avg('rating'))['rating__avg']
-        self.aggregate_rating = avg_rating if avg_rating else 0.0
+        self.rating = avg_rating if avg_rating else 0
         self.save()
 
 
@@ -64,4 +64,4 @@ class Review(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self.product.update_aggregate_rating()
+        self.product.update_rating()

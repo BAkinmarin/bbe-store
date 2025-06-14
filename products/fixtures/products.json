@@ -8,7 +8,7 @@
       "description": "Our Whipped Man Body Butter is a miracle product on rough skin. It is softening, moisturising, easily absorbed into the skin wihtout leaving a greasy residue and is suitable for most skin types.\" Fragranced with Neroli, Cedarwood and Sandalwood essential oils, our Whipped Man Butter soothes, nourishes and enhances the complexion.",
       "price": 25.21,
       "category": 1,
-      "aggregate_rating": 5.0,
+      "rating": 5,
       "image_url": "",
       "image": "vanilla-butter-sunset.JPEG"
     }
@@ -22,7 +22,7 @@
       "description": "Our Whipped Vanilla Body Butter is softening, moisturising, easily absorbed into the skin without leaving a greasy residue and is suitable for most skin types. Delicately scented using distilled vanilla extract from high grade Madagascan Vanilla Pods, our hand whipped Vanilla Body Butter gives off a subtle, sweet and creamy vanilla aroma that lingers on the skin but is not too overpowering and is currently our #1 Bestseller.",
       "price": 26.20,
       "category": 1,
-      "aggregate_rating": 5.0,
+      "rating": 5,
       "image_url": "",
       "image": "vanilla-butter-wooden-block.JPEG"
     }
@@ -36,7 +36,7 @@
       "description": "Our Whipped Baby Body Butter is nourishing, softening and easily absorbed into the skin without leaving a greasy residue. Suitable for all skin types including sensitive skin and infants under 3 years. The perfect gift for expecting mothers!",
       "price": 22.41,
       "category": 1,
-      "aggregate_rating": 5.0,
+      "rating": 5,
       "image_url": "",
       "image": "vanilla-butter-sunset.JPEG"
     }
@@ -50,7 +50,7 @@
       "description": "Our Whipped Vanilla Latte Body Butter smells like a deliciously warm drink on a cold winter morning. It is super hydrating, easily absorbed into the skin and leaves the skin with a healthy glow.\" Delicately scented using distilled extracts from high grade Madagascan Vanilla Pods and Arabica Coffee Beans, our hand Whipped Vanilla Latte Body Butter gives off a subtle, sweet and creamy coffee aroma that lingers on the skin but is not too overpowering.",
       "price": 26.40,
       "category": 1,
-      "aggregate_rating": 4.9,
+      "rating": 4,
       "image_url": "",
       "image": "vanilla-butter-sunset.JPEG"
     }
@@ -64,7 +64,7 @@
       "description": "Our Whipped Head-to-Toe Body Butter is an all-rounder! It is suitable for use on hair and skin and can be applied all year round. Our H2T Body Butter smells absolutely gorgeous - if we do say so ourselves - and, as with any of our body butters, a little goes a lonnnnnnnng way. It is super hydrating, easily absorbed into the scalp and skin, leaving the skin with a healthy glow.\" Delicately scented using organic lavender, ylang ylang and sandalwood oils, our hand Whipped H2T Body Butter gives off a calming, floral aroma that lingers on the skin but is not too overpowering.",
       "price": 30.99,
       "category": 5,
-      "aggregate_rating": 5.0,
+      "rating": 5,
       "image_url": "",
       "image": "head-to-toe-butter-block.JPEG"
     }
@@ -78,7 +78,7 @@
       "description": "Our Whipped Calming Butter contains lavender and chamomile essential oils which are great for soothing and reducing the appearance of uneven skin.",
       "price": 28.99,
       "category": 2,
-      "aggregate_rating": 5.0,
+      "rating": 5,
       "image_url": "",
       "image": "calming-face-butter-resized.jpeg"
     }

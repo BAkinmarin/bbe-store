@@ -10,13 +10,13 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'category',
         'price',
-        'aggregate_rating',
+        'rating',
         'reviews_count',
         'image',
     )
 
     # Order by highest-rated products
-    ordering = ["-aggregate_rating"]
+    ordering = ["-rating"]
 
 
 class CategoryAdmin(admin.ModelAdmin):
