@@ -39,6 +39,19 @@ body {
     color: #FDFBED;
 }
 
+.btn-outline-black {
+    background: #FDFBED;
+    color: #0C1618 !important; /* !important overrides link colors for <a> elements */
+    border: 1px solid #0C1618;
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: #0C1618;
+    color: #FDFBED !important;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
