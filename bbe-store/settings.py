@@ -85,6 +85,7 @@ TEMPLATES = [
 
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'basket.contexts.basket_contents',
             ],
         },
     },
@@ -172,6 +173,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 # images
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / "media"
+
+# Calculate delivery cost
+FREE_DELIVERY_THRESHOLD = 25
+STANDARD_DELIVERY_PERCENTAGE = 15
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
