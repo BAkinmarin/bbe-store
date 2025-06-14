@@ -72,20 +72,14 @@ def product_detail(request, product_id):
     # reviews = product.reviews.all()
     # has_reviews = reviews.exists()
 
-    # Fetch all reviews, including those were only a rating was left
+    # Fetch all reviews, including those where only a rating was left
     reviews = Review.objects.filter(product=product)
     has_reviews = reviews.exists()
-
-    # Dynamically calculate Average Rating
-    average_rating = Review.objects.filter(product=product).aggregate(Avg('rating'))['rating__avg']
-    if average_rating is None:
-        average_rating = 'No Ratings'
 
     context = {
         'product': product,
         'reviews': reviews,
         'has_reviews': has_reviews,
-        'average_rating': average_rating,
     }
 
     return render(request, 'products/product_detail.html', context)

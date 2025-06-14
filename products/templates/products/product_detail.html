@@ -38,7 +38,7 @@
                 </p>
                 {% endif %}
                 {% if product.rating %}
-                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }}/5</small>
                 {% else %}
                 <small class="text-muted">No Rating</small>
                 {% endif %}
@@ -72,7 +72,7 @@
                 <ul>
                     {% for review in reviews %}
                     <li>
-                        <strong>{{ review.customer_name }}</strong> ({{ review.rating }} / 5)
+                        <strong>{{ review.customer_name }}</strong> ({{ review.rating }}/5)
                         <p>{{ review.review_text }}</p>
                         <small>Reviewed on: {{ review.date }}</small>
                     </li>
