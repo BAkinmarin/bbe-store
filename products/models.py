@@ -27,7 +27,7 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
 
     # Dynamically update the rating whenever a new review is added
-    rating = models.IntegerField(default=0)
+    rating = models.FloatField(default=0.0)
 
     def __str__(self):
         return self.name
