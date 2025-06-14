@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
 from .forms import ReviewForm
-from .models import Product, Category
+from .models import Product, Category, Review
 from django.db.models.functions import Lower
+from django.db.models import Avg
 
 
 # Create your views here.
@@ -68,13 +69,23 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     # Fetch reviews if any
-    reviews = product.reviews.all()
+    # reviews = product.reviews.all()
+    # has_reviews = reviews.exists()
+
+    # Fetch all reviews, including those were only a rating was left
+    reviews = Review.objects.filter(product=product)
     has_reviews = reviews.exists()
+
+    # Dynamically calculate Average Rating
+    average_rating = Review.objects.filter(product=product).aggregate(Avg('rating'))['rating__avg']
+    if average_rating is None:
+        average_rating = 'No Ratings'
 
     context = {
         'product': product,
         'reviews': reviews,
         'has_reviews': has_reviews,
+        'average_rating': average_rating,
     }
 
     return render(request, 'products/product_detail.html', context)

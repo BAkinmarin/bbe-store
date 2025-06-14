@@ -39,7 +39,7 @@ class Product(models.Model):
     @property
     def update_rating(self):
         avg_rating = self.reviews.aggregate(models.Avg('rating'))['rating__avg']
-        self.rating = avg_rating if avg_rating else 0
+        self.rating = avg_rating if avg_rating else 0.0
         self.save()
 
 
