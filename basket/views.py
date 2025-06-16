@@ -48,3 +48,4 @@ def remove_from_basket(request, item_id):
 
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))
+
