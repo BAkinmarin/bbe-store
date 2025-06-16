@@ -20,7 +20,6 @@ def add_to_basket(request, item_id):
     else:
         basket[item_id] = quantity
 
-    
     request.session['basket'] = basket
     return redirect(redirect_url)
 
@@ -48,4 +47,3 @@ def remove_from_basket(request, item_id):
 
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))
-
