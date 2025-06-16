@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load basket_tools %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -73,7 +75,7 @@
                         <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">£{{ item.product.price }}</p>
+                            <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </td>
                     </tr>
                     {% endfor %}
@@ -114,6 +116,9 @@
                 </span>
             </p>
             <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                <span class="icon">
+                    <i class="fa-solid fa-left-long"></i>
+                </span>
                 <span class="text-uppercase">Continue Shopping</span>
             </a>
             {% endif %}
@@ -136,7 +141,7 @@
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/basket/remove/${itemId}`;
+        var url = `/basket/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
         $.post(url, data)
          .done(function() {
