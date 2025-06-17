@@ -63,7 +63,7 @@
       "name": "Head-to-Toe Butter",
       "description": "Our Whipped Head-to-Toe Body Butter is an all-rounder! It is suitable for use on hair and skin and can be applied all year round. Our H2T Body Butter smells absolutely gorgeous - if we do say so ourselves - and, as with any of our body butters, a little goes a lonnnnnnnng way. It is super hydrating, easily absorbed into the scalp and skin, leaving the skin with a healthy glow.\" Delicately scented using organic lavender, ylang ylang and sandalwood oils, our hand Whipped H2T Body Butter gives off a calming, floral aroma that lingers on the skin but is not too overpowering.",
       "price": 30.99,
-      "category": 5,
+      "category": 3,
       "rating": 5.0,
       "image_url": "",
       "image": "head-to-toe-butter-block.JPEG"
@@ -77,10 +77,24 @@
       "name": "Calming Butter",
       "description": "Our Whipped Calming Butter contains lavender and chamomile essential oils which are great for soothing and reducing the appearance of uneven skin.",
       "price": 28.99,
-      "category": 2,
+      "category": 3,
       "rating": 5.0,
       "image_url": "",
-      "image": "calming-face-butter-resized.jpeg"
+      "image": "calmingbutter.png"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "products.product",
+    "fields": {
+      "sku": "lav001",
+      "name": "Lavender Butter",
+      "description": "Our Whipped Lavender Butter contains lavender extract which is great for reducing the appearance of uneven skin.",
+      "price": 27.69,
+      "category": 3,
+      "rating": 4.8,
+      "image_url": "",
+      "image": "lavenderbutter.png"
     }
   }
 ]

@@ -11,28 +11,12 @@
     "pk": 2,
     "model": "products.category",
     "fields": {
-      "name": "facebutters",
-      "friendly_name": "Face Butters"
-    }
-  },
-  {
-    "pk": 3,
-    "model": "products.category",
-    "fields": {
       "name": "bodyscrubs",
       "friendly_name": "Body Scrubs"
     }
   },
   {
-    "pk": 4,
-    "model": "products.category",
-    "fields": {
-      "name": "bathsalts",
-      "friendly_name": "Bath Salts"
-    }
-  },
-  {
-    "pk": 5,
+    "pk": 3,
     "model": "products.category",
     "fields": {
       "name": "newarrivals",
