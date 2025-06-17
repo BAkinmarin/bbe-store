@@ -204,6 +204,7 @@ body {
 /* Push down body when navbar is collapsed on mobile devices */
 @media (max-width: 991px) {
     .header-container {
+        /* padding-top: 116px; */
         padding-top: 116px;
     }
 
