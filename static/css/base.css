@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url("bbe-shea-in-pot.JPEG") no-repeat center top fixed;
+    background: url("/media/bbe-shea-in-pot.JPEG") no-repeat center top fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #0C1618;
