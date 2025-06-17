@@ -26,16 +26,13 @@ class Order(models.Model):
 
 
     def _generate_order_number(self):
-        """
-        Inspired by Code Institute's Boutique Ado Walkthrough Project.
-        This function generates a random, unique order number using UUID.
-        """
+        """Inspired by Code Institute's Boutique Ado Walkthrough Project.
+        This function generates a random, unique order number using UUID."""
+
         return uuid.uuid4().hex.upper()
-    
+
     def update_total(self):
-        """ 
-        Update grand total and delivery costs whenever a line item is added.
-        """
+        """ Update grand total and delivery costs when a line item is added """
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
@@ -43,11 +40,9 @@ class Order(models.Model):
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
-    
+
     def save(self, *args, **kwargs):
-        """
-        Override save method and set order number if not set.
-        """
+        """ Override save method and set order number if not set. """
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
@@ -64,9 +59,7 @@ class OrderLineItem(models.Model):
 
 
     def save(self, *args, **kwargs):
-        """
-        Override save method, set lineitem total and update order total.
-        """
+        """ Override save method, set lineitem total and update order total """
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
