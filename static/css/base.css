@@ -204,12 +204,15 @@ body {
 /* Push down body when navbar is collapsed on mobile devices */
 @media (max-width: 991px) {
     .header-container {
-        /* padding-top: 116px; */
         padding-top: 116px;
     }
 
     body {
         /* height: calc(100vh - 142px); */
         height: calc(100vh - 116px);
+    }
+
+    .push-down {
+        padding-top: 18px;
     }
 }
