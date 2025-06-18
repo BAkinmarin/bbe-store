@@ -215,4 +215,8 @@ body {
     .push-down {
         padding-top: 18px;
     }
+
+    .pb-3, .py-3 {
+        text-align: right;
+    }
 }
