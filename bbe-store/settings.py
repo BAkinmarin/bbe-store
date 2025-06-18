@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    #  Project Apps
+    # Project Apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'products',
     'basket',
     'checkout',
+
+    # Other Dependencies
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +91,11 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'basket.contexts.basket_contents',
             ],
+            # Allows crispy_forms to be available in all templates by default
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ],
         },
     },
 ]
@@ -103,8 +111,7 @@ AUTHENTICATION_BACKENDS = [
 
 # Constants
 SITE_ID = 1
-# CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-# CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
