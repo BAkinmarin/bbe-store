@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">Thank You For Your Order!</h2>
+                <h2 class="logo-font mb-4">Thank You! <i class="fa-regular fa-face-grin-beam"></i></h2>
                 <hr>
                 <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
             </div>
@@ -31,9 +31,10 @@
         <div class="row">
 			<div class="col-12 col-lg-7 text-right">
 				<!-- <a href="{% url 'products' %}?category=new_arrivals" class="btn btn-black rounded-0 my-2"> -->
-                    <a href="{% url 'products' %}" class="btn btn-black rounded-0 my-2"></a>
+                <a href="{% url 'products' %}" class="btn btn-black rounded-0 my-2"></a>
 					<span class="icon mr-2">
-						<i class="fas fa-gifts"></i>
+						<!-- <i class="fas fa-gifts"></i> -->
+                        <i class="fa-solid fa-gifts"></i>
 					</span>
 					<span class="text-uppercase">Check out new arrivals!</span>
 				</a>

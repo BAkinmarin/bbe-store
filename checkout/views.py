@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
+
 from .forms import OrderForm
-from basket.contexts import basket_contents
 from .models import Order, OrderLineItem
 from products.models import Product
+from basket.contexts import basket_contents
 
 import stripe
 
@@ -52,7 +53,7 @@ def checkout(request):
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One or more items in your basket was not found."
+                        "One or more items in your basket is out of stock."
                         "Please contact customer service!")
                     )
                     order.delete()
@@ -61,13 +62,13 @@ def checkout(request):
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, "Hmmm... Something's not right... \
-                Please check that your details are correct.")
+            messages.error(request, 'Oops! Your form has an error. \
+                Please check that your details are correct.')
 
     else:
         basket = request.session.get('basket', {})
         if not basket:
-            messages.error(request, "Your shopping basket is empty")
+            messages.error(request, "Your shoppinn basket is empty.")
             return redirect(reverse('products'))
 
         current_basket = basket_contents(request)
@@ -82,14 +83,14 @@ def checkout(request):
         order_form = OrderForm()
 
         if not stripe_public_key:
-            messages.warning(request, 'Stripe public key missing. \
+            messages.warning(request, 'Stripe public key is missing. \
                 Did you forget to set it in your environment?')
 
         template = 'checkout/checkout.html'
         context = {
             'order_form': order_form,
             'stripe_public_key': stripe_public_key,
-            'client_secret': 'intent.client_secret',
+            'client_secret': intent.client_secret,
         }
 
         return render(request, template, context)
@@ -101,7 +102,7 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Order successfull! \
+    messages.success(request, f'Order successful! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email} shortly.')
 
