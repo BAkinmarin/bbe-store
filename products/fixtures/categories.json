@@ -22,5 +22,53 @@
       "name": "newarrivals",
       "friendly_name": "New Arrivals"
     }
+  },
+  {
+    "pk": 4,
+    "model": "products.category",
+    "fields": {
+      "name": "sensitive",
+      "friendly_name": "Sensitive"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.category",
+    "fields": {
+      "name": "exfoliating",
+      "friendly_name": "Exfoliating"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "products.category",
+    "fields": {
+      "name": "moisturising",
+      "friendly_name": "Moisturising"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "products.category",
+    "fields": {
+      "name": "formen",
+      "friendly_name": "For Men"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "products.category",
+    "fields": {
+      "name": "forwomen",
+      "friendly_name": "For Women"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "products.category",
+    "fields": {
+      "name": "forchildren",
+      "friendly_name": "For Children"
+    }
   }
 ]
