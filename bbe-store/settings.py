@@ -29,11 +29,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
-# DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
-
+ALLOWED_HOSTS = [
+    '127.0.0.1',  # Local preview
+    'bbe-ecommerce-store-92b8a29d8b51.herokuapp.com/',  # Heroku app
+]
 
 # Application definition
 
