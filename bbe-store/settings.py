@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
     # Other Dependencies
     'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bbe-store.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -89,6 +92,7 @@ TEMPLATES = [
 
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'basket.contexts.basket_contents',
             ],
             # Allows crispy_forms to be available in all templates by default
@@ -111,7 +115,6 @@ AUTHENTICATION_BACKENDS = [
 
 # Constants
 SITE_ID = 1
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -173,7 +176,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
