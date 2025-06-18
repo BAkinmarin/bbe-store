@@ -3,7 +3,7 @@
     "pk": 1,
     "model": "products.category",
     "fields": {
-      "name": "bodybutters",
+      "name": "body_butters",
       "friendly_name": "Body Butters"
     }
   },
@@ -11,7 +11,7 @@
     "pk": 2,
     "model": "products.category",
     "fields": {
-      "name": "bodyscrubs",
+      "name": "body_scrubs",
       "friendly_name": "Body Scrubs"
     }
   },
@@ -19,7 +19,7 @@
     "pk": 3,
     "model": "products.category",
     "fields": {
-      "name": "newarrivals",
+      "name": "new_arrivals",
       "friendly_name": "New Arrivals"
     }
   },
@@ -51,7 +51,7 @@
     "pk": 7,
     "model": "products.category",
     "fields": {
-      "name": "formen",
+      "name": "for_men",
       "friendly_name": "For Men"
     }
   },
@@ -59,7 +59,7 @@
     "pk": 8,
     "model": "products.category",
     "fields": {
-      "name": "forwomen",
+      "name": "for_women",
       "friendly_name": "For Women"
     }
   },
@@ -67,7 +67,7 @@
     "pk": 9,
     "model": "products.category",
     "fields": {
-      "name": "forchildren",
+      "name": "for_children",
       "friendly_name": "For Children"
     }
   }
