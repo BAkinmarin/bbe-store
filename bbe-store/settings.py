@@ -185,7 +185,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Calculate delivery cost
-FREE_DELIVERY_THRESHOLD = 25
+FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 15
 
 # Stripe

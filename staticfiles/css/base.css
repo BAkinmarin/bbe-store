@@ -212,11 +212,16 @@ body {
         height: calc(100vh - 116px);
     }
 
+    /* Push down sort selector */
     .push-down {
         padding-top: 18px;
     }
 
     .pb-3, .py-3 {
         text-align: right;
+    }
+
+    .btn:not(:disabled):not(.disabled) {
+    text-align: center;
     }
 }
