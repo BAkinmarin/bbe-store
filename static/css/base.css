@@ -69,6 +69,7 @@ body {
 .text-white {
     color: #FDFBED !important;
     font-weight: 600;
+    font-size: 3rem;
 }
 
 .border-black {

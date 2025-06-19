@@ -30,7 +30,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
-# DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',  # Local preview
@@ -62,7 +61,17 @@ INSTALLED_APPS = [
     # Other Dependencies
     'crispy_forms',
     'crispy_bootstrap4',
+
+    # Media Management
+    'storages',
 ]
+
+# Constants
+SITE_ID = 1
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,8 +86,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bbe-store.urls'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -118,21 +125,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-# Constants
-SITE_ID = 1
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-# ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
-
-ACCOUNT_LOGIN_METHODS = {'username', 'email'}
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*', 'password1*', 'password2*']
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_USERNAME_MIN_LENGTH = 4
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
-
 WSGI_APPLICATION = 'bbe-store.wsgi.application'
 
 
@@ -161,6 +153,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+# ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_MIN_LENGTH = 4
 
 
 # Internationalization
