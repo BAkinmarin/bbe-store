@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 
     # Other Dependencies
     'crispy_forms',
-    'crispy_bootstrap4',
+    'crispy_bootstrap5',
 
     # Media Management
     'storages',
