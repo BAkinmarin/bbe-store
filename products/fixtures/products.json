@@ -110,5 +110,159 @@
       "image_url": "",
       "image": "oudbutter.png"
     }
+  },
+  {
+    "pk": 9,
+    "model": "products.product",
+    "fields": {
+      "sku": "cofbs001",
+      "name": "Coffee Body Scrub",
+      "description": "A rich blend of organic coffee grounds and coconut oil to smooth skin, boost circulation and wake up your senses.",
+      "price": 19.99,
+      "category": 5,
+      "rating": 5,
+      "image_url": "",
+      "image": "coffeebodyscrub.jpg"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "products.product",
+    "fields": {
+      "sku": "grapbs001",
+      "name": "Grapefruit Body Scrub",
+      "description": "Packed with organic grapefruit and vitamin-rich oils to refresh, tone, and awaken tired skin.",
+      "price": 19.99,
+      "category": 4.5,
+      "rating": 5,
+      "image_url": "",
+      "image": "grapefruitbodyscrub.jpg"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "products.product",
+    "fields": {
+      "sku": "honbs001",
+      "name": "Honey Body Scrub",
+      "description": "Organic honey and oats work together to deeply moisturize, soothe irritation, and leave skin glowing.",
+      "price": 19.99,
+      "category": 2,
+      "rating": 5,
+      "image_url": "",
+      "image": "honeybodyscrub.jpg"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "products.product",
+    "fields": {
+      "sku": "lavbs001",
+      "name": "Lavender Body Scrub",
+      "description": "Made with organic lavender and natural exfoliants to calm your senses and soften your skin.",
+      "price": 19.99,
+      "category": 2,
+      "rating": 5,
+      "image_url": "",
+      "image": "lavenderscrub.png"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "products.product",
+    "fields": {
+      "sku": "mangbs001",
+      "name": "Mango Body Scrub",
+      "description": "A tropical blend of organic mango extract and sugar crystals that polishes skin to a radiant, healthy finish.",
+      "price": 19.99,
+      "category": 6,
+      "rating": 5,
+      "image_url": "",
+      "image": "mangobodyscrub.jpg"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "products.product",
+    "fields": {
+      "sku": "orabs001",
+      "name": "Orange Body Scrub",
+      "description": "Orange leaves skin glowing.",
+      "price": 19.99,
+      "category": 3,
+      "rating": 0,
+      "image_url": "",
+      "image": "orangescrub.png"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "products.product",
+    "fields": {
+      "sku": "rosbs001",
+      "name": "Rose Body Scrub",
+      "description": "Made with organic rose petals and essential oils for gentle exfoliation and deep hydration.",
+      "price": 19.99,
+      "category": 4,
+      "rating": 4.9,
+      "image_url": "",
+      "image": "rosebodyscrub.jpg"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "products.product",
+    "fields": {
+      "sku": "sandbs001",
+      "name": "Sandalwood Body Scrub",
+      "description": "Crafted with pure sandalwood and organic botanicals to detoxify and nourish your skin and mind.",
+      "price": 19.99,
+      "category": 7,
+      "rating": 5,
+      "image_url": "",
+      "image": "sandalwoodbodyscrub.jpg"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "products.product",
+    "fields": {
+      "sku": "teabs001",
+      "name": "Tea Tree Body Scrub",
+      "description": "Organic tea tree soothes irritation, and leaves skin glowing.",
+      "price": 19.99,
+      "category": 3,
+      "rating": 0,
+      "image_url": "",
+      "image": "teatreebodyscrub.jpg"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "products.product",
+    "fields": {
+      "sku": "watbs001",
+      "name": "Watermelon Body Scrub",
+      "description": "Naturally hydrating with organic watermelon and aloe to exfoliate gently and lock in moisture for glowing skin.",
+      "price": 19.99,
+      "category": 4,
+      "rating": 5,
+      "image_url": "",
+      "image": "watermelonbodyscrub.jpg"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "products.product",
+    "fields": {
+      "sku": "turbs001",
+      "name": "Turmeric Body Scrub",
+      "description": "Infused with organic turmeric and plant-based oils to brighten dull skin and restore your natural glow.",
+      "price": 19.99,
+      "category": 5,
+      "rating": 5,
+      "image_url": "",
+      "image": "turmericbodyscrub.jpg"
+    }
   }
 ]
