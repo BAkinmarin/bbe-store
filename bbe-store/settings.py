@@ -34,7 +34,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     '127.0.0.1',  # Local preview
-    'bbe-ecommerce-store-92b8a29d8b51.herokuapp.com/',  # Heroku
+    '.herokuapp.com',  # Heroku
 ]
 
 # Application definition
