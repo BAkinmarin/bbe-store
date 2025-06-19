@@ -163,7 +163,7 @@
       "price": 19.99,
       "category": 2,
       "rating": 5,
-      "image_url": "",
+      "image_url": "https://res.cloudinary.com/dz7cs6m8f/image/upload/v1750329581/lavenderscrub_m8jc4p.png",
       "image": "lavenderscrub.png"
     }
   },
