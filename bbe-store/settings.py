@@ -11,15 +11,16 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 """
 
+from pathlib import Path
 import os
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,11 +30,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',  # Local preview
-    'bbe-ecommerce-store-92b8a29d8b51.herokuapp.com',  # Heroku Application
+    '.herokuapp.com',  # Heroku Application
 ]
 
 # Application definition
