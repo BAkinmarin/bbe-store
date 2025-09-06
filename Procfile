@@ -1,1 +1,1 @@
-web: gunicorn bbe-store.wsgi:application
+web: gunicorn bbe-store.wsgi
