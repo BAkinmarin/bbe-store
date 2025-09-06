@@ -32,10 +32,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',  # Local preview
-    '.herokuapp.com',  # Heroku Application
-]
+
+# ALLOWED_HOSTS = [
+#     '127.0.0.1',  # Local preview
+#     '.herokuapp.com',  # Heroku Application
+# ]
+
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
+
 
 # Application definition
 
@@ -48,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinary',
+    # 'cloudinary',
     'django_summernote',
 
     # Project Apps
@@ -69,17 +73,38 @@ INSTALLED_APPS = [
 ]
 
 # Constants
-SITE_ID = 1
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
+# SITE_ID = 1
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
+# LOGIN_URL = '/accounts/login/'
+# LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_LOGIN_METHODS = {'username', 'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
+
+
+# Constants
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+
+# MIDDLEWARE = [
+#     'django.middleware.security.SecurityMiddleware',
+#     'whitenoise.middleware.WhiteNoiseMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#     'allauth.account.middleware.AccountMiddleware',
+# ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,6 +149,23 @@ TEMPLATES = [
     },
 ]
 
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [TEMPLATES_DIR],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
+
+
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AUTHENTICATION_BACKENDS = [
@@ -141,17 +183,28 @@ WSGI_APPLICATION = 'bbe-store.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+# if 'DATABASE_URL' in os.environ:
+#     DATABASES = {
+#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+#     }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
+
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com"
+]
 
 
 # Password validation
@@ -188,9 +241,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 # STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
@@ -200,14 +253,14 @@ USE_TZ = True
 # MEDIA_ROOT = BASE_DIR / "media"
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 # Images
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Stripe
 # Calculate delivery cost
@@ -216,6 +269,7 @@ STANDARD_DELIVERY_PERCENTAGE = 15
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.email.backends.console.EmailBackend'
