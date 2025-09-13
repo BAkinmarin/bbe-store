@@ -5,6 +5,7 @@ from .forms import ReviewForm
 from .models import Product, Category, Review
 from django.db.models.functions import Lower
 from django.db.models import Avg
+from datetime import datetime
 
 
 # Create your views here.
@@ -30,7 +31,7 @@ def all_products(request):
 
             if sortkey == 'category':
                 sortkey = 'category__name'
-                
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -58,6 +59,7 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'year': datetime.now().year,
     }
 
     return render(request, 'products/products.html', context)

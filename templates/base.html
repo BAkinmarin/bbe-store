@@ -159,6 +159,33 @@
     </script>
     {% endblock %}
 
+<!-- Footer -->
+{% if not request.path == '/' %}
+<footer class="footer mt-auto py-4 bg-gold">
+    <div class="container text-center">
+        <p class="mb-2">&copy; 2021-{{ year }} B's Beauty Emporium™</p>
+        <p class="mb-2">Registered Office: 61 Bridge Street, Kington, Herefordshire, HR5 3DJ, United Kingdom</p>
+        <div>Check out our pages on:
+            <a href="https://facebook.com/yourhandle" class="text-dark" target="_blank">
+                <i class="fa-brands fa-square-facebook fa-lg"></i>&nbsp;
+            </a>
+            <a href="https://instagram.com/yourhandle" class="text-dark" target="_blank">
+                <i class="fa-brands fa-square-instagram fa-lg"></i>&nbsp; &nbsp;
+            </a>
+        <!-- </div> -->
+        <!-- <div> -->
+        <span class="me-2">We accept:</span>
+        <i class="fa-brands fa-cc-visa fa-lg"></i>&nbsp;
+        <i class="fa-brands fa-cc-mastercard fa-lg"></i>&nbsp;
+        <i class="fa-brands fa-cc-amex fa-lg"></i>&nbsp;
+        <i class="fa-brands fa-cc-paypal fa-lg"></i>&nbsp;
+        <i class="fa-brands fa-alipay fa-lg"></i>&nbsp;
+        <i class="fa-brands fa-cc-apple-pay fa-lg"></i>
+        </div>
+    </div>
+</footer>
+{% endif %}
+
 </body>
 
 </html>
