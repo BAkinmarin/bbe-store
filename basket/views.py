@@ -30,7 +30,7 @@ def add_to_basket(request, item_id):
 
 
 def update_basket(request, item_id):
-    """ Update quantity of selected products in shopping basket to selected amount """
+    """ Update quantity of selected products in basket to selected amount """
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     basket = request.session.get('basket', {})
