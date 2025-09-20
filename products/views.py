@@ -8,9 +8,6 @@ from django.db.models import Avg
 from datetime import datetime
 
 
-# Create your views here.
-
-
 def all_products(request):
     """ A view to display all products with search and sort functionality """
 
@@ -93,7 +90,7 @@ def submit_product_review(request, product_id):
     # user_orders = Order.objects.filter(user=request.user, products=product)
 
     # if not user_orders.exists():
-    #     messages.error(request, "Please purchase this product to leave a review.")
+    #     messages.error(request, "Purchase this product to leave a review.")
     #     return redirect("product_detail", product_id=product.id)
 
     form = ReviewForm(request.POST or None)
