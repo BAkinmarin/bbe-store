@@ -51,7 +51,7 @@
                             <form action="{% url 'update_basket' item.item_id %}" class="form update-form" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <div class="input-group input-group-{{ item.item_id }}">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="decrement-qty btn btn-sm btn-black rounded-0 decrement-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
                                             <span>
@@ -59,9 +59,9 @@
                                             </span>
                                         </button>
                                     </div>
-                                    <input type="number" class="form-control qty_input form-control-sm id_qty_{{ item.item_id }}" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}">
+                                    <input type="number" class="form-control qty_input form-control-sm" id="id_qty_{{ item.item_id }}" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" readonly>
                                     <div class="input-group-append">
-                                        <button class="increment-qty btn btn-sm btn-black rounded-0 increment-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
+                                        <button class="increment-qty btn btn-sm btn-black rounded-0" id="increment-qty_{{ item.item_id }}" data-item_id="{{ item.item_id }}">
                                             <span>
                                                 <i class="fas fa-plus fa-sm"></i>
                                             </span>
@@ -69,9 +69,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <a class="update-link text-info"><small>Update</small></a>
-                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                            </form>
+                            <a class="update-link text-info"><small>Update</small></a>
+                            <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                         </td>
                         <td class="py-3">
                             <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -128,7 +128,9 @@
 
 {% block postloadjs %}
 {{ block.super }}
+
 {% include 'products/includes/quantity_input_script.html' %}
+
 <script type="text/javascript">
     // Update quantity on click
     $('.update-link').click(function(e) {
@@ -146,6 +148,6 @@
          .done(function() {
              location.reload();
          });
-    })
+    });
 </script>
 {% endblock %}

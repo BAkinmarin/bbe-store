@@ -1,44 +1,51 @@
 <script type="text/javascript">
-    // Inspired by Code Institute's Boutique Ado Walkthrough Project
-    // Disable +/- buttons outside 1-99 range
+    // Disable +/- buttons outside 1–99 range
     function handleEnableDisable(itemId) {
-        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
-        var minusDisabled = currentValue < 2;
-        var plusDisabled = currentValue > 98;
+        var input = $(`#id_qty_${itemId}`);
+        var currentValue = parseInt(input.val(), 10);
+
+        var minusDisabled = currentValue <= 1;
+        var plusDisabled = currentValue >= 99;
+
         $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
         $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
     }
 
-    // Ensure proper enabling/disabling of all inputs on page load
-    var allQtyInputs = $('.qty_input');
-    for(var i = 0; i < allQtyInputs.length; i++){
-        var itemId = $(allQtyInputs[i]).data('item_id');
+    // Initial setup on page load
+    $('.qty_input').each(function () {
+        var itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
-    }
+    });
 
-    // Check enable/disable every time the input is changed
-    $('.qty_input').change(function() {
+    // Prevent unintended form submission on input change
+    $('.qty_input').on('input', function () {
         var itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
     });
 
     // Increment quantity
-    $('.increment-qty').click(function(e) {
-       e.preventDefault();
-       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-       var currentValue = parseInt($(closestInput).val());
-       $(closestInput).val(currentValue + 1);
-       var itemId = $(this).data('item_id');
-       handleEnableDisable(itemId);
+    $('.increment-qty').click(function (e) {
+        e.preventDefault();
+
+        var itemId = $(this).data('item_id');
+        var input = $(`#id_qty_${itemId}`);
+        var currentValue = parseInt(input.val(), 10);
+
+        if (currentValue < 99) {
+            input.val(currentValue + 1).trigger('input');
+        }
     });
-    
+
     // Decrement quantity
-    $('.decrement-qty').click(function(e) {
-       e.preventDefault();
-       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-       var currentValue = parseInt($(closestInput).val());
-       $(closestInput).val(currentValue - 1);
-       var itemId = $(this).data('item_id');
-       handleEnableDisable(itemId);
+    $('.decrement-qty').click(function (e) {
+        e.preventDefault();
+
+        var itemId = $(this).data('item_id');
+        var input = $(`#id_qty_${itemId}`);
+        var currentValue = parseInt(input.val(), 10);
+
+        if (currentValue > 1) {
+            input.val(currentValue - 1).trigger('input');
+        }
     });
 </script>
