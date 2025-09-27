@@ -27,6 +27,7 @@ urlpatterns = [
     path('basket/', include('basket.urls')),
     path('checkout/', include('checkout.urls')),
     path('products/', include('products.urls')),
+    path('profile/', include('profiles.urls')),
     path('', include('home.urls')),
     re_path
     (r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
