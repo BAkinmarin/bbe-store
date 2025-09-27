@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'products',
     'basket',
     'checkout',
+    'profiles',
 
     # Other Dependencies
     'crispy_forms',
