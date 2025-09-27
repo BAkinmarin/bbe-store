@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     Inspired by Code Institute's Boutique Ado Walkthrough Project.
     For maintaining default delivery information and order history.
     """
-    default_user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone_number = models.CharField(max_length=20, null=True, blank=True)
     default_street_address1 = models.CharField(max_length=80, null=True, blank=True)
     default_street_address2 = models.CharField(max_length=80, null=True, blank=True)
@@ -27,7 +27,7 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
-    Create or update user profile
+    Create or update UserProfile.
     """
     if created:
         UserProfile.objects.create(user=instance)
