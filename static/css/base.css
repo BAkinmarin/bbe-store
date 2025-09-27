@@ -9,6 +9,7 @@ body {
     color: #0C1618;
 }
 
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -139,6 +140,7 @@ a.category-badge > span.badge:hover {
     height: 2px;
 }
 
+
 /* Inspired by CI's Boutique Ado; from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 
 .arrow-up {
@@ -151,6 +153,7 @@ a.category-badge > span.badge:hover {
     top: -10px;
     right: 36px;
 }
+
 
 /* Convenience classes - colors from Bootstrap CSS */
 .arrow-primary {
@@ -215,6 +218,7 @@ a.category-badge > span.badge:hover {
         padding-top: 164px;
     }
 }
+
 
 /* Push down body when navbar is collapsed on mobile devices */
 @media (max-width: 991px) {
