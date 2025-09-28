@@ -1,0 +1,4 @@
+.order-history {
+    max-height: 416px; /* Set height of profile form and submit button */
+    overflow-y: auto;
+}
