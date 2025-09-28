@@ -23,12 +23,12 @@ from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('home.urls')),
     path('accounts/', include('allauth.urls')),
     path('basket/', include('basket.urls')),
     path('checkout/', include('checkout.urls')),
     path('products/', include('products.urls')),
     path('profile/', include('profiles.urls')),
-    path('', include('home.urls')),
     re_path
     (r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
