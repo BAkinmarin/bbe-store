@@ -21,4 +21,4 @@ class ProductForm(forms.ModelForm):
 
         self.fields['category'].choices = friendly_names
         for field_name, field in self.fields.items():
-            field.widget_attrs['class'] = 'border-black rounded-0'
+            setattr(ProductForm, 'class', 'border-black rounded-0')

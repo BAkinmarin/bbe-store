@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
 from django.contrib import messages
 from django.db.models import Q
-from .forms import ReviewForm
+from .forms import ReviewForm, ProductForm
 from .models import Product, Category, Review
 from django.db.models.functions import Lower
 from django.db.models import Avg
@@ -82,6 +82,17 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+
+def add_product(request):
+    """ Functionality for Admin to add products to store """
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+        }
+
+    return render(request, template, context)
 
 
 def submit_product_review(request, product_id):
