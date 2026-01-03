@@ -130,6 +130,14 @@ def modify_product(request, product_id):
     return render(request, template, context)
 
 
+def delete_product(request, product_id):
+    """ Functionality for Admin to delete an existing product from the store """
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product deleted successfully!')
+    return redirect(reverse('products'))
+
+
 def submit_product_review(request, product_id):
     """ A view to invite customers to leave feedback on verified purchases """
     product = get_object_or_404(Product, pk=product_id)
