@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
 from django.contrib import messages
+# from django.contrib import login_required
 from django.db.models import Q
 from .forms import ReviewForm, ProductForm
 from .models import Product, Category, Review
 from django.db.models.functions import Lower
 from django.db.models import Avg
 from datetime import datetime
+
+from functools import wraps
 
 
 def all_products(request):
@@ -84,6 +87,17 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
+def superuser_required(view_func):
+    @wraps(view_func)
+    def wrapper(request, *args, **kwargs):
+        if not request.user.is_superuser:
+            messages.error(request, 'Sorry, only the store owner can do that!')
+            return redirect(reverse('home'))
+        return view_func(request, *args, **kwargs)
+    return wrapper
+
+
+@superuser_required
 def add_product(request):
     """ Functionality for Admin to add products to store """
     if request.method == "POST":
@@ -106,6 +120,7 @@ def add_product(request):
     return render(request, template, context)
 
 
+@superuser_required
 def modify_product(request, product_id):
     """ Functionality for Admin to modify an existing product in the store """
     product = get_object_or_404(Product, pk=product_id)
@@ -130,6 +145,7 @@ def modify_product(request, product_id):
     return render(request, template, context)
 
 
+@superuser_required
 def delete_product(request, product_id):
     """ Functionality for Admin to delete an existing product from the store """
     product = get_object_or_404(Product, pk=product_id)

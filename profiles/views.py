@@ -1,11 +1,25 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
+# from django.contrib import login_required
 
 from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
 
+from functools import wraps
 
+
+def superuser_required(view_func):
+    @wraps(view_func)
+    def wrapper(request, *args, **kwargs):
+        if not request.user.is_superuser:
+            messages.error(request, 'Sorry, only the store owner can do that!')
+            return redirect(reverse('home'))
+        return view_func(request, *args, **kwargs)
+    return wrapper
+
+
+@superuser_required
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
