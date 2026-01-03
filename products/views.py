@@ -44,7 +44,7 @@ def all_products(request):
             query = request.GET['q']
             if not query:
                 messages.error(request, "Please enter a search criteria!")
-                return redirect (reverse('products'))
+                return redirect(reverse('products'))
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
@@ -102,6 +102,30 @@ def add_product(request):
     context = {
         'form': form,
         }
+
+    return render(request, template, context)
+
+
+def modify_product(request, product_id):
+    """ Functionality for Admin to modify an existing product in the store """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product modification successful!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Product modification failed. Please check form and try again.')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are about to modify {product.name}!')
+
+    template = 'products/modify_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
 
     return render(request, template, context)
 
