@@ -154,9 +154,10 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
-def submit_product_review(request, product_id):
-    """ A view to invite customers to leave feedback on verified purchases """
+def submit_review(request, product_id):
+    """ A view to invite customers to leave a product review on verified purchases """
     product = get_object_or_404(Product, pk=product_id)
+
     # user_orders = Order.objects.filter(user=request.user, products=product)
 
     # if not user_orders.exists():
@@ -164,10 +165,12 @@ def submit_product_review(request, product_id):
     #     return redirect("product_detail", product_id=product.id)
 
     form = ReviewForm(request.POST or None)
+
     if request.method == "POST" and form.is_valid():
         review = form.save(commit=False)
         review.product = product
-        review.customer_name = request.user.username
+        # review.customer_name = request.username
+        review.customer_name = request.user
         # review.order = user_orders.first()
         review.save()
         return redirect("product_detail", product_id=product.id)
