@@ -227,7 +227,16 @@ a.category-badge > span.badge:hover {
     }
 
     body {
-        height: calc(100vh - 116px);
+        height: calc(100vh - 142px);
+        line-height: 1.25rem;
+    }
+
+    h2 {
+        margin-top: 3.25rem;
+    }
+
+    h3 {
+        margin-top: 3.25rem;
     }
 
     /* Push down sort selector */
