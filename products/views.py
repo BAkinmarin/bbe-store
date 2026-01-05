@@ -154,7 +154,7 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
-def submit_review(request, product_id):
+def review_product(request, product_id):
     """ A view to invite customers to leave a product review on verified purchases """
     product = get_object_or_404(Product, pk=product_id)
 
@@ -175,4 +175,4 @@ def submit_review(request, product_id):
         review.save()
         return redirect("product_detail", product_id=product.id)
 
-    return render(request, "submit_product_review.html", {"product": product, "form": form})
+    return render(request, "products/review_product.html", {"product": product, "form": form})
