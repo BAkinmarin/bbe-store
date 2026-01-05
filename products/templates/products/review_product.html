@@ -33,6 +33,8 @@
             </div> -->
             <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
+                {% if user.is_authenticated %}
+                <h5 class="text-muted">Leave Product Review</h5>
                 <form method="POST" action="{% url 'review_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
@@ -48,6 +50,7 @@
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 {% endblock %}

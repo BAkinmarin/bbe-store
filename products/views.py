@@ -70,10 +70,6 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
-    # Fetch reviews if any
-    # reviews = product.reviews.all()
-    # has_reviews = reviews.exists()
-
     # Fetch all reviews, including those where only a rating was left
     reviews = Review.objects.filter(product=product)
     has_reviews = reviews.exists()

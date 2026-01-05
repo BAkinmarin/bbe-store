@@ -1,7 +1,7 @@
 {% load static %}
 
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="h-100" lang="en">
 
 <head>
     <!-- Required meta tags -->
@@ -84,14 +84,14 @@
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                            <a href="{% url 'add_product' %}" class="dropdown-item">Admin</a>
-                            {% endif %}
-                            <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                            {% else %}
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Signup!</a>
+                                {% if request.user.is_superuser %}
+                                <a href="{% url 'add_product' %}" class="dropdown-item">Admin</a>
+                                {% endif %}
+                                <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                {% else %}
+                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'account_signup' %}" class="dropdown-item">Signup!</a>
                             {% endif %}
                         </div>
                     </li>
@@ -130,6 +130,7 @@
         </div>
     </header>
 
+    <!-- Django messages -->
     {% if messages %}
     <div class="message-container">
         {% for message in messages %}
