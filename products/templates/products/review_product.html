@@ -16,25 +16,14 @@
             <div class="col">
                 <br>
                 <h3 class="logo-font mb-4">Customer Review</h3>
-                <h5 class="text-muted">Leave Product Review</h5>
                 <hr>
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-12 col-lg-6 order-lg-last mb-5">
-                <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Add Product</button>
-                    </div>
-                </form>
-            </div> -->
-            <div class="row">
+        <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
                 {% if user.is_authenticated %}
-                <h5 class="text-muted">Leave Product Review</h5>
+                <h5 class="text-muted">{{ product.name }}</h5>
+                <br>
                 <form method="POST" action="{% url 'review_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
@@ -49,8 +38,13 @@
                         <button class="btn btn-black rounded-0" type="submit">Submit Review</button>
                     </div>
                 </form>
+                {% else %}
+                <div>
+                    <a href="{% url 'account_login' %}">Login</a> or
+                    <a href="{% url 'account_signup' %}">Signup</a> to leave a comment
+                </div>
+                {% endif %}
             </div>
-
         </div>
     </div>
 {% endblock %}
