@@ -1,3 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col text-center mt-5">
+                <br>
+                <h1 class="text-center mt-5">Oops! This page does not exist...</h1>
+                <br>
+                <h1 class="text-center mt-5">Let’s get you back on track!</h1>
+                <br>
+                <h1 class="text-center mt-5">
+                    <a href="#" class="btn btn-outline-black rounded-0" type="submit">
+                        <h1 class="text-center text-uppercase">Go Home <i class="fas fa-home"></i></h1>
+                    </a>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
