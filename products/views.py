@@ -171,6 +171,7 @@ def review_product(request, product_id):
         review.customer_name = request.user
         # review.order = user_orders.first()
         review.save()
+        messages.success(request, 'Thanks for leaving us a review!')
         return redirect("product_detail", product_id=product.id)
 
     return render(request, "products/review_product.html",
