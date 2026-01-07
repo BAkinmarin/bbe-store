@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
-# from django.contrib import login_required
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .forms import ReviewForm, ProductForm
 from .models import Product, Category, Review
@@ -143,15 +144,16 @@ def modify_product(request, product_id):
 
 @superuser_required
 def delete_product(request, product_id):
-    """ Functionality for Admin to delete an existing product from the store """
+    """ Functionality for Admin to delete an existing product from store """
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted successfully!')
     return redirect(reverse('products'))
 
 
+@login_required
 def review_product(request, product_id):
-    """ A view to invite customers to leave a product review on verified purchases """
+    """ A view to invite customers to leave a review on verified purchases """
     product = get_object_or_404(Product, pk=product_id)
 
     # user_orders = Order.objects.filter(user=request.user, products=product)
@@ -171,4 +173,5 @@ def review_product(request, product_id):
         review.save()
         return redirect("product_detail", product_id=product.id)
 
-    return render(request, "products/review_product.html", {"product": product, "form": form})
+    return render(request, "products/review_product.html",
+                  {"product": product, "form": form})

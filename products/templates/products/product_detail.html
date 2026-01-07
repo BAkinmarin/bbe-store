@@ -95,10 +95,16 @@
                 {% if has_reviews %}
                 <ul>
                     {% for review in reviews %}
-                    <li>
+                    <li class="">
                         <strong>{{ review.customer_name }}</strong> ({{ review.rating }}/5)
-                        <p>{{ review.review_text }}</p>
-                        <small>Reviewed on: {{ review.date }}</small>
+                        <p class="text-justify font-italic">
+                            <i class="fa-solid fa-quote-left small"></i> 
+                                {{ review.review_text }} 
+                            <i class="fa-solid fa-quote-right small"></i>
+                            <span>
+                                <small class="text-muted"> &nbsp;&nbsp; Reviewed: {{ review.review_date }}</small>
+                            </span>
+                        </p>
                     </li>
                     {% endfor %}
                 </ul>

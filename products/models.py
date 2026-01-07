@@ -37,11 +37,10 @@ class Product(models.Model):
     def reviews_count(self):
         return self.reviews.count()
 
-    @property
     def update_rating(self):
         avg_rating = self.reviews.aggregate(models.Avg('rating'))['rating__avg']
         self.rating = avg_rating if avg_rating else 0.0
-        self.save()
+        self.save(update_fields=["rating"])
 
 
 # class Order(models.Model):
@@ -59,6 +58,12 @@ class Review(models.Model):
 
     # Link customer review to a customer order for verification
     # order = models.ForeignKey("orders.Order", null=True, blank=True, on_delete=models.SET_NULL)
+
+    class Meta:
+        ordering = ["-review_date"]
+
+    # def __str__(self):
+    #     return f"Review by {self.user} on {self.product}"
 
     def __str__(self):
         return f"{self.customer_name} - {self.product.name} ({self.rating}/5)"
