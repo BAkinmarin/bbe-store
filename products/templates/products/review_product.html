@@ -40,8 +40,10 @@
                 </form>
                 {% else %}
                 <div>
-                    <a href="{% url 'account_login' %}">Login</a> or
-                    <a href="{% url 'account_signup' %}">Signup</a> to leave a comment
+                    <p>You are not logged in.
+                        <a href="{% url 'account_login' %}">Log in</a> or
+                        <a href="{% url 'account_signup' %}">Sign up</a> now to leave a review.
+                    </p>
                 </div>
                 {% endif %}
             </div>
