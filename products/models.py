@@ -50,14 +50,8 @@ class Review(models.Model):
     review_text = models.TextField()
     review_date = models.DateField(auto_now_add=True)
 
-    # Link customer review to a customer order for verification
-    # order = models.ForeignKey("orders.Order", null=True, blank=True, on_delete=models.SET_NULL)
-
     class Meta:
         ordering = ["-review_date"]
-
-    # def __str__(self):
-    #     return f"Review by {self.user} on {self.product}"
 
     def __str__(self):
         return f"{self.customer_name} - {self.product.name} ({self.rating}/5)"
