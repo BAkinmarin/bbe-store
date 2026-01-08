@@ -9,6 +9,11 @@ body {
     color: #0C1618;
 }
 
+.my-1, .mb-1 {
+    margin-top: none;
+    margin-bottom: none;
+}
+
 
 /* from Bulma */
 .icon {
