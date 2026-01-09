@@ -52,7 +52,7 @@
     <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-gold pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link" aria-label="Home">
                     <h4 class="logo-font text-black my-0"><strong>B's Beauty Emporium™</strong></h4>
                 </a>
             </div>
@@ -75,17 +75,23 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" aria-label="{% if request.user.is_authenticated %}Profile{% else %}My Account{% endif %}">
                             <div class="text-center">
-                                <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0">My Account</p>
+                                <div><i class="fas fa-user fa-lg" aria-hidden="true"></i></div>
+                                <p class="my-0">
+                                    {% if request.user.is_authenticated %}
+                                    {{ user }}
+                                    {% else %}
+                                    My Account
+                                    {% endif %}
+                                </p>
                             </div>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                <a href="{% url 'add_product' %}" class="dropdown-item">Admin</a>
+                                <a href="{% url 'add_product' %}" class="dropdown-item">Inventory Management</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -97,7 +103,7 @@
                     </li>
                     <li class="list-inline-item">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-                            href="{% url 'view_basket' %}">
+                            href="{% url 'view_basket' %}" aria-label="View shopping basket, total {{ grand_total|floatformat:2 }}">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag"></i></div>
                                 <p class="my-0">
@@ -114,7 +120,7 @@
             </div>
         </div>
         <div class="row bg-gold">
-            <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <nav class="navbar navbar-expand-lg navbar-light w-100" aria-label="Main Navigation">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
                     aria-controls="main-nav" aria-expanded="false" aria-label="Toggle Navigation">
                     <span class="navbar-toggler-icon"></span>
