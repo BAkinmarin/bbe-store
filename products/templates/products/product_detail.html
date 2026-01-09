@@ -95,23 +95,45 @@
                 {% if has_reviews %}
                 <ul>
                     {% for review in reviews %}
-                    <li class="">
-                        <strong>{{ review.customer_name }}</strong> ({{ review.rating }}/5)
-                        <p class="text-justify">
-                            <i class="fa-solid fa-quote-left small"></i> 
-                                {{ review.review_text }} 
-                            <i class="fa-solid fa-quote-right small"></i>
-                            <span>
-                                <small class="text-muted font-italic"> &nbsp;&nbsp; - {{ review.review_date }}</small>
-                            </span>
-                        </p>
-                    </li>
+                        <li class="">
+                            <strong>{{ review.customer_name }}</strong> ({{ review.rating }}/5)
+                            <p class="text-justify">
+                                <i class="fa-solid fa-quote-left small"></i> 
+                                    {{ review.review_text }} 
+                                <i class="fa-solid fa-quote-right small"></i>
+                                <span>
+                                    <small class="text-muted font-italic"> &nbsp;&nbsp; - {{ review.review_date }}</small>
+                                </span>
+                            </p>
+                        </li>
+                        {% if review.admin_response %}
+                        <div class="admin-response">
+                            <strong>Store Response:</strong>
+                            <p>{{ review.admin_response }}</p>
+                            <small>Responded on {{ review.admin_response_date|date:"j M Y" }}</small>
+                        </div>
+                        {% endif %}
                     {% endfor %}
                 </ul>
                 {% else %}
                 <p>No reviews yet. Be the first to review this product!</p>
                 {% endif %}
-                <a href="{% url 'review_product' product.id %}">Leave a Review</a>
+                <a href="{% url 'review_product' order.id product_id %}">Leave a Review</a>
+                {% if user.is_authenticated %}
+                    {% for order in user_orders_with_product %}
+                        {% if order.id in reviewed_order_ids %}
+                            <p>Order {{ order.order_number }} — Already reviewed</p>
+                        {% else %}
+                            <a href="{% url 'review_product' order.id product_id %}" class="btn btn-primary">
+                                Review order {{ order.order_number }}
+                            </a>
+                        {% endif %}
+                    {% empty %}
+                        <p>You haven't purchased this product yet.</p>
+                    {% endfor %}
+                {% else %}
+                    <p><a href="{% url 'account_login' %}">Log in</a> to leave a review.</p>
+                {% endif %}
             </div>
         </div>
     </div>

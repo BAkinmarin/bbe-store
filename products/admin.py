@@ -28,11 +28,35 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
-        'customer_name',
         'product',
         'rating',
         'review_date',
+        'user',
+        'order',
+        'is_approved',
+        'admin_response_short',
     )
+    list_filter = ("is_approved", "rating", "review_date", "product")
+    search_fields = ("user__username", "product__name", "review_text", "admin_response")
+    readonly_fields = ("review_date", "admin_response_date")
+
+    fieldsets = (
+        ("Review Details", {
+            "fields": ("product", "user", "order", "rating", "review_text", "review_date")
+        }),
+        ("Moderation", {
+            "fields": ("is_approved",)
+        }),
+        ("Admin Response", {
+            "fields": ("admin_response", "admin_response_date")
+        }),
+    )
+
+    def admin_response_short(self, obj):
+        if obj.admin_response:
+            return obj.admin_response[:40] + "..."
+        return "—"
+    admin_response_short.short_description = "Admin Response"
 
 
 admin.site.register(Product, ProductAdmin)

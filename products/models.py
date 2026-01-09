@@ -2,6 +2,11 @@ from django.conf import settings
 from django.db import models
 from django.db.models import Avg
 
+from django.utils import timezone
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 class Category(models.Model):
 
@@ -44,18 +49,51 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
-    customer_name = models.CharField(max_length=254)
+    product = models.ForeignKey("products.Product", on_delete=models.CASCADE, related_name="reviews")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=True, related_name="reviews")
+    order = models.ForeignKey("checkout.Order", on_delete=models.CASCADE, null=False, blank=True, related_name="reviews")
     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     review_text = models.TextField()
     review_date = models.DateField(auto_now_add=True)
 
+    # Admin moderation and engagement
+    is_approved = models.BooleanField(default=False)
+    admin_response = models.TextField(blank=True, null=True)
+    admin_response_date = models.DateTimeField(blank=True, null=True)
+
     class Meta:
         ordering = ["-review_date"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "product", "order"],
+                name="unique_review_per_product_per_order"
+            )
+        ]
 
     def __str__(self):
-        return f"{self.customer_name} - {self.product.name} ({self.rating}/5)"
+        return f"{self.user.username} - {self.product.name} ({self.rating}/5)"
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        self.product.update_rating()
+        # Add timestamp to admin response
+        if self.admin_response and not self.admin_response_date:
+            self.admin_response_date = timezone.now()
+            super().save(*args, **kwargs)
+            self.product.update_rating()
+
+
+# class Review(models.Model):
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
+#     customer_name = models.CharField(max_length=254)
+#     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
+#     review_text = models.TextField()
+#     review_date = models.DateField(auto_now_add=True)
+
+#     class Meta:
+#         ordering = ["-review_date"]
+
+#     def __str__(self):
+#         return f"{self.customer_name} - {self.product.name} ({self.rating}/5)"
+
+#     def save(self, *args, **kwargs):
+#         super().save(*args, **kwargs)
+#         self.product.update_rating()

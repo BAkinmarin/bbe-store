@@ -11,6 +11,8 @@ from datetime import datetime
 
 from functools import wraps
 
+from checkout.models import Order, OrderLineItem
+
 
 def all_products(request):
     """ A view to display all products with search and sort functionality """
@@ -67,21 +69,52 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
-    """ A view to display selected product details including reviews """
-
     product = get_object_or_404(Product, pk=product_id)
 
-    # Fetch all reviews, including those where only a rating was left
-    reviews = Review.objects.filter(product=product)
-    has_reviews = reviews.exists()
+    user_orders_with_product = []
+    reviewed_order_ids = []
+
+    if request.user.is_authenticated:
+        # Find all orders where the user bought this product
+        order_ids = OrderLineItem.objects.filter(
+            order__user_profile=request.user.userprofile,
+            product=product
+        ).values_list("order_id", flat=True)
+
+        user_orders_with_product = Order.objects.filter(id__in=order_ids)
+
+        # Find which of those orders already have reviews
+        reviewed_order_ids = Review.objects.filter(
+            user=request.user,
+            product=product,
+            order_id__in=order_ids
+        ).values_list("order_id", flat=True)
 
     context = {
-        'product': product,
-        'reviews': reviews,
-        'has_reviews': has_reviews,
+        "product": product,
+        "user_orders_with_product": user_orders_with_product,
+        "reviewed_order_ids": reviewed_order_ids,
     }
 
-    return render(request, 'products/product_detail.html', context)
+    return render(request, "products/product_detail.html", context)
+
+
+# def product_detail(request, product_id):
+#     """ A view to display selected product details including reviews """
+
+#     product = get_object_or_404(Product, pk=product_id)
+
+#     # Fetch all reviews, including those where only a rating was left
+#     reviews = Review.objects.filter(product=product)
+#     has_reviews = reviews.exists()
+
+#     context = {
+#         'product': product,
+#         'reviews': reviews,
+#         'has_reviews': has_reviews,
+#     }
+
+#     return render(request, 'products/product_detail.html', context)
 
 
 def superuser_required(view_func):
@@ -152,27 +185,81 @@ def delete_product(request, product_id):
 
 
 @login_required
-def review_product(request, product_id):
-    """ A view to invite customers to leave a review on verified purchases """
+def review_product(request, product_id, order_id):
     product = get_object_or_404(Product, pk=product_id)
+    order = get_object_or_404(Order, pk=order_id, order_user_profile=request.user.userprofile)
 
-    # user_orders = Order.objects.filter(user=request.user, products=product)
+    # Ensure the order belongs to this user
+    order = get_object_or_404(
+        Order,
+        pk=order_id,
+        user_profile=request.user.userprofile
+    )
 
-    # if not user_orders.exists():
-    #     messages.error(request, "Purchase this product to leave a review.")
-    #     return redirect("product_detail", product_id=product.id)
+    # Check that this order actually contains this product
+    purchased = OrderLineItem.objects.filter(
+        order=order,
+        product=product
+    ).exists()
+
+    if not purchased:
+        messages.error(request, "This product is not part of that order.")
+        return redirect("product_detail", product_id=product.id)
+
+    # Check if review already exists for this product/order
+    already_reviewed = Review.objects.filter(
+        user=request.user,
+        product=product,
+        order=order
+    ).exists()
+
+    if already_reviewed:
+        messages.error(request, "You have already reviewed this product for this order.")
+        return redirect("product_detail", product_id=product.id)
 
     form = ReviewForm(request.POST or None)
 
     if request.method == "POST" and form.is_valid():
         review = form.save(commit=False)
         review.product = product
-        # review.customer_name = request.username
-        review.customer_name = request.user
-        # review.order = user_orders.first()
+        review.user = request.user
+        review.order = order
         review.save()
-        messages.success(request, 'Thanks for leaving us a review!')
+
+        messages.success(request, "Thanks for reviewing your purchase!")
         return redirect("product_detail", product_id=product.id)
 
-    return render(request, "products/review_product.html",
-                  {"product": product, "form": form})
+    context = {
+        "product": product,
+        "order": order,
+        "form": form,
+    }
+
+    return render(request, "products/review_product.html", context)
+
+
+# @login_required
+# def review_product(request, product_id):
+#     """ A view to invite customers to leave a review on verified purchases """
+#     product = get_object_or_404(Product, pk=product_id)
+
+#     # user_orders = Order.objects.filter(user=request.user, products=product)
+
+#     # if not user_orders.exists():
+#     #     messages.error(request, "Purchase this product to leave a review.")
+#     #     return redirect("product_detail", product_id=product.id)
+
+#     form = ReviewForm(request.POST or None)
+
+#     if request.method == "POST" and form.is_valid():
+#         review = form.save(commit=False)
+#         review.product = product
+#         # review.customer_name = request.username
+#         review.customer_name = request.user
+#         # review.order = user_orders.first()
+#         review.save()
+#         messages.success(request, 'Thanks for leaving us a review!')
+#         return redirect("product_detail", product_id=product.id)
+
+#     return render(request, "products/review_product.html",
+#                   {"product": product, "form": form})
