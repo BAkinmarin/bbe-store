@@ -136,12 +136,30 @@ def review_product(request, order_id, product_id):
 
     form = ReviewForm(request.POST or None)
 
-    if request.method == "POST" and form.is_valid():
-        review = form.save(commit=False)
-        review.product = product
-        review.user = request.user
-        review.order = order
-        review.save()
+    # if request.method == "POST" and form.is_valid():
+    #     review = form.save(commit=False)
+    #     review.product = product
+    #     review.user = request.user
+    #     review.order = order
+    #     review.save()
+
+    if request.method == "POST":
+        print("POST received")
+        print("Form valid:", form.is_valid())
+        print("Errors:", form.errors)
+        print("Cleaned data:", getattr(form, "cleaned_data", None))
+
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product
+            review.user = request.user
+            review.order = order
+
+            try:
+                review.save()
+                print("Review saved with ID:", review.id)
+            except Exception as e:
+                print("Save error:", e)
 
         messages.success(request, "Thanks for reviewing your purchase!")
         return redirect("product_detail", product_id=product.id)

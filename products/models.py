@@ -77,8 +77,9 @@ class Review(models.Model):
         # Add timestamp to admin response
         if self.admin_response and not self.admin_response_date:
             self.admin_response_date = timezone.now()
-            super().save(*args, **kwargs)
-            self.product.update_rating()
+
+        super().save(*args, **kwargs)
+        self.product.update_rating()
 
 
 # class Review(models.Model):
