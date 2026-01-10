@@ -99,6 +99,108 @@ def product_detail(request, product_id):
     return render(request, "products/product_detail.html", context)
 
 
+@login_required
+def review_product(request, order_id, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    order = get_object_or_404(Order, pk=order_id, user_profile=request.user.userprofile)
+
+    # Check that this order actually contains this product
+    purchased = OrderLineItem.objects.filter(
+        order=order,
+        product=product
+    ).exists()
+
+    if not purchased:
+        messages.error(request, "This product is not part of that order.")
+        return redirect("product_detail", product_id=product.id)
+
+    # Check if review already exists for this product/order
+    already_reviewed = Review.objects.filter(
+        user=request.user,
+        product=product,
+        order=order
+    ).exists()
+
+    if already_reviewed:
+        messages.error(request, "You have already reviewed this product for this order.")
+        return redirect("product_detail", product_id=product.id)
+
+    form = ReviewForm(request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        review = form.save(commit=False)
+        review.product = product
+        review.user = request.user
+        review.order = order
+        review.save()
+
+        messages.success(request, "Thanks for reviewing your purchase!")
+        return redirect("product_detail", product_id=product.id)
+
+    context = {
+        "product": product,
+        "order": order,
+        "form": form,
+    }
+
+    return render(request, "products/review_product.html", context)
+
+
+# @login_required
+# def review_product(request, order_id, product_id):
+#     product = get_object_or_404(Product, pk=product_id)
+#     # order = get_object_or_404(Order, pk=order_id, order_user_profile=request.user.userprofile)
+#     order = get_object_or_404(Order, pk=order_id, user_profile=request.user.userprofile)
+
+#     # Ensure the order belongs to this user
+#     # order = get_object_or_404(
+#     #     Order,
+#     #     pk=order_id,
+#     #     user_profile=request.user.userprofile
+#     # )
+
+#     # Check that this order actually contains this product
+#     purchased = OrderLineItem.objects.filter(
+#         order=order,
+#         product=product
+#     ).exists()
+
+#     if not purchased:
+#         messages.error(request, "This product is not part of that order.")
+#         return redirect("product_detail", product_id=product.id)
+
+#     # Check if review already exists for this product/order
+#     already_reviewed = Review.objects.filter(
+#         user=request.user,
+#         product=product,
+#         order=order
+#     ).exists()
+
+#     if already_reviewed:
+#         messages.error(request, "You have already reviewed this product for this order.")
+#         return redirect("product_detail", product_id=product.id)
+
+#     form = ReviewForm(request.POST or None)
+
+#     if request.method == "POST" and form.is_valid():
+#         review = form.save(commit=False)
+#         review.product = product
+#         review.user = request.user
+#         review.order = order
+#         review.save()
+
+#         messages.success(request, "Thanks for reviewing your purchase!")
+#         return redirect("product_detail", product_id=product.id)
+
+#     context = {
+#         "product": product,
+#         "order": order,
+#         "form": form,
+#     }
+
+#     return render(request, "products/review_product.html", context)
+
+
 # def product_detail(request, product_id):
 #     """ A view to display selected product details including reviews """
 
@@ -182,60 +284,6 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted successfully!')
     return redirect(reverse('products'))
-
-
-@login_required
-def review_product(request, product_id, order_id):
-    product = get_object_or_404(Product, pk=product_id)
-    order = get_object_or_404(Order, pk=order_id, order_user_profile=request.user.userprofile)
-
-    # Ensure the order belongs to this user
-    order = get_object_or_404(
-        Order,
-        pk=order_id,
-        user_profile=request.user.userprofile
-    )
-
-    # Check that this order actually contains this product
-    purchased = OrderLineItem.objects.filter(
-        order=order,
-        product=product
-    ).exists()
-
-    if not purchased:
-        messages.error(request, "This product is not part of that order.")
-        return redirect("product_detail", product_id=product.id)
-
-    # Check if review already exists for this product/order
-    already_reviewed = Review.objects.filter(
-        user=request.user,
-        product=product,
-        order=order
-    ).exists()
-
-    if already_reviewed:
-        messages.error(request, "You have already reviewed this product for this order.")
-        return redirect("product_detail", product_id=product.id)
-
-    form = ReviewForm(request.POST or None)
-
-    if request.method == "POST" and form.is_valid():
-        review = form.save(commit=False)
-        review.product = product
-        review.user = request.user
-        review.order = order
-        review.save()
-
-        messages.success(request, "Thanks for reviewing your purchase!")
-        return redirect("product_detail", product_id=product.id)
-
-    context = {
-        "product": product,
-        "order": order,
-        "form": form,
-    }
-
-    return render(request, "products/review_product.html", context)
 
 
 # @login_required

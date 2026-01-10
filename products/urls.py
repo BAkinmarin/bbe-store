@@ -10,5 +10,5 @@ urlpatterns = [
     # path('review/<int:product_id>/', views.review_product, name='review_product'),
     # path('review/<int:order_id>/review/<int:product_id>/', views.review_product, name='review_product'),
     # path('<int:product_id>/review/<int:order_id>/', views.review_product, name='review_product'),
-    path('product/review/<int:order_id>/review/<int:product_id>/', views.review_product, name="review_product")
+    path('products/review/<str:order_id>/review/<int:product_id>/', views.review_product, name="review_product"),
 ]
