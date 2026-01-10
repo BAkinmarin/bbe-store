@@ -16,37 +16,55 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <br>
-                <h3 class="logo-font mb-4">Customer Review</h3>
+                <h3 class="logo-font mb-4">Review Your Purchase</h3>
                 <hr>
+            </div>
+        </div>
+        <!-- Product Summary -->
+        <div class="row">
+            <div class="mb-4 p-3 border-0">
+                <h5 class="mb-1">{{ product.name }}</h5>
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mt-2" style="width: 50%;">
+                {% endif %}
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
+                <!-- Review Form -->
                 {% if user.is_authenticated %}
-                <h5 class="text-muted">{{ product.name }}</h5>
-                <form method="POST" action="{% url 'review_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                    {% endfor %}
-                    <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Submit Review</button>
-                    </div>
-                </form>
-                {% else %}
-                <div>
-                    <p>You are not logged in.
-                        <a href="{% url 'account_login' %}">Log in</a> or
-                        <a href="{% url 'account_signup' %}">Sign up</a> now to leave a review.
+                {% if order %}
+                    <p class="text-muted">
+                        Reviewing <strong>{{ order.order_number }}</strong>
                     </p>
-                </div>
+                    <form method="POST" action="{% url 'review_product' order.id product.id %}" enctype="multipart/form-data" class="form mb-4">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            {% if field.name != 'image' %}
+                                {{ field|as_crispy_field }}
+                            {% else %}
+                                <label class="mt-3">{{ field.label }}</label>
+                                {{ field }}
+                            {% endif %}
+                        {% endfor %}
+                        <div class="text-right mt-4">
+                            <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-black rounded-0">
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-black rounded-0">Submit Review</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <div class="alert alert-warning">
+                        We couldn't verify your order for this product.
+                    </div>
                 {% endif %}
+            {% else %}
+                <p>You must be logged in and have made a purchase to leave a review.
+                    <a href="{% url 'account_login' %}">Log in</a> or
+                    <a href="{% url 'account_signup' %}">Sign up</a>.
+                </p>
+            {% endif %}
             </div>
         </div>
     </div>

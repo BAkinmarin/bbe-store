@@ -127,8 +127,11 @@
                             {% else %}
                                 <!-- Check if there is a history of previous order linked to product -->
                                 {% if order.id and product_id %}
-                                    <a href="{% url 'review_product' order.id product_id %}" class="btn btn-primary">
+                                    <!-- <a href="{% url 'review_product' order.id product_id %}" class="btn btn-primary">
                                         Review order {{ order.order_number }}
+                                    </a> -->
+                                    <a class="btn btn-outline-black rounded-0" href="{% url 'review_product' order.id product_id %}">
+                                        Review order
                                     </a>
                                 {% else %}
                                      <p> Oops! You must purchase this product to leave a review.</p>

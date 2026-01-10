@@ -61,12 +61,14 @@
                     {% for item in order.lineitems.all %}
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <p class="small mb-0 text-black font-weight-bold">
-                                {{ item.product.name }}
-                            </p>
+                            <a href="{% url 'product_detail' item.product.id %}">
+                                <p class="small mb-0 text-black font-weight-bold">
+                                    {{ item.product.name }}
+                                </p>
+                            </a>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="small mb-0">{{ item.quantity }} @ £{{ item.product.price }} each</p>
+                            <p class="small mb-0 ">{{ item.quantity }} @ £{{ item.product.price }} each</p>
                         </div>
                     </div>
                     {% endfor %}

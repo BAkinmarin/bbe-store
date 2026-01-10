@@ -87,16 +87,20 @@ def product_detail(request, product_id):
         user_orders_with_product = Order.objects.filter(id__in=order_ids)
 
         # Find which of those orders already have reviews
-        reviewed_order_ids = Review.objects.filter(
+        reviewed_order_ids = list(Review.objects.filter(
             user=request.user,
             product=product,
             order_id__in=order_ids
-        ).values_list("order_id", flat=True)
+        ).values_list("order_id", flat=True))
 
     context = {
         "product": product,
         "user_orders_with_product": user_orders_with_product,
         "reviewed_order_ids": reviewed_order_ids,
+        'product_id': product.id,
+        'has_reviews': Review.objects.filter(product=product).exists(),
+        'reviews':
+            Review.objects.filter(product=product).order_by('-review_date'),
     }
 
     return render(request, "products/product_detail.html", context)
