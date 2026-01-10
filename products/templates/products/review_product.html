@@ -16,13 +16,14 @@
     <div class="container">
         <div class="row">
             <div class="col">
+                <br>
                 <h3 class="logo-font mb-4">Review Your Purchase</h3>
                 <hr>
             </div>
         </div>
         <!-- Product Summary -->
         <div class="row">
-            <div class="mb-4 p-3 border-0 text-center">
+            <div class="mb-2 p-3 border-0 text-center">
                 <h5 class="mb-1">{{ product.name }}</h5>
                 {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mt-3" 
@@ -35,10 +36,6 @@
                 <!-- Review Form -->
                 {% if user.is_authenticated %}
                 {% if order %}
-                    <p class="text-muted">
-                        Reviewing <strong>{{ order.order_number }}</strong>
-                    </p>
-                    <p class="text-muted">Leave us a review!</p>
                     <form method="POST" action="{% url 'review_product' order.id product.id %}" enctype="multipart/form-data" class="form mb-4">
                         {% csrf_token %}
                         {% for field in form %}
