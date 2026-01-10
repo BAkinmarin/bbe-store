@@ -76,6 +76,7 @@ def product_detail(request, product_id):
 
     user_orders_with_product = []
     reviewed_order_ids = []
+    user_pending_review = None
 
     if request.user.is_authenticated:
         # Find all orders where the user bought this product

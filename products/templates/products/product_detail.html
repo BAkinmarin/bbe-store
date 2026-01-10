@@ -120,7 +120,7 @@
                     <p>No reviews yet. Be the first to review this product!</p>
                 {% endif %}
                  <!-- Pending approval badge (only visible to the shopper who wrote the review) -->
-                {% if user.is_authenticated and user_prending_review %}
+                {% if user.is_authenticated and user_pending_review %}
                     <div class="alert alert-warning mt-3">
                         <strong>Review Pending Approval</strong>
                         <p class="mb-1">{{ user_pending_review.review_text }}</p>
