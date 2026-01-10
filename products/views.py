@@ -171,7 +171,10 @@ def review_product(request, order_id, product_id):
             except Exception as e:
                 print("Save error:", e)
 
-        messages.success(request, "Thanks for reviewing your purchase!")
+        messages.success(
+            request,
+            "Thank you! Your review has been received and is pending approval."
+        )
         return redirect("product_detail", product_id=product.id)
 
     context = {
