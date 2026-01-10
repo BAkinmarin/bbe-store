@@ -93,14 +93,31 @@ def product_detail(request, product_id):
             order_id__in=order_ids
         ).values_list("order_id", flat=True))
 
+        # Display 'Pending' badge where appropriate
+        user_pending_review = None
+        if request.user.is_authenticated:
+            user_pending_review = Review.objects.filter(
+                user=request.user,
+                product=product,
+                is_approved=False
+            ).first()
+
     context = {
-        "product": product,
-        "user_orders_with_product": user_orders_with_product,
-        "reviewed_order_ids": reviewed_order_ids,
+        'product': product,
+        'user_orders_with_product': user_orders_with_product,
+        'reviewed_order_ids': reviewed_order_ids,
+        'user_pending_review': user_pending_review,
         'product_id': product.id,
-        'has_reviews': Review.objects.filter(product=product).exists(),
+        'has_reviews':
+        Review.objects.filter(
+            product=product,
+            is_approved=True
+        ).exists(),
         'reviews':
-            Review.objects.filter(product=product).order_by('-review_date'),
+        Review.objects.filter(
+            product=product,
+            is_approved=True
+        ).order_by('-review_date'),
     }
 
     return render(request, "products/product_detail.html", context)
@@ -135,13 +152,6 @@ def review_product(request, order_id, product_id):
         return redirect("product_detail", product_id=product.id)
 
     form = ReviewForm(request.POST or None)
-
-    # if request.method == "POST" and form.is_valid():
-    #     review = form.save(commit=False)
-    #     review.product = product
-    #     review.user = request.user
-    #     review.order = order
-    #     review.save()
 
     if request.method == "POST":
         print("POST received")
@@ -217,7 +227,8 @@ def modify_product(request, product_id):
             messages.success(request, 'Product modification successful!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Product modification failed. Please check form and try again.')
+            messages.error(request,
+                           'Product update failed. Check form and try again.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are about to modify {product.name}!')

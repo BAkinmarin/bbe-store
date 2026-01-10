@@ -96,7 +96,7 @@
                 <ul>
                     {% for review in reviews %}
                         <li>
-                            <strong>{{ review.customer_name }}</strong> ({{ review.rating }}/5)
+                            <strong>{{ review.user }}</strong> ({{ review.rating }}/5)
                             <p class="text-justify">
                                 <i class="fa-solid fa-quote-left small"></i>
                                 {{ review.review_text }}
@@ -119,32 +119,35 @@
                 {% else %}
                     <p>No reviews yet. Be the first to review this product!</p>
                 {% endif %}
+                 <!-- Pending approval badge (only visible to the shopper who wrote the review) -->
+                {% if user.is_authenticated and user_prending_review %}
+                    <div class="alert alert-warning mt-3">
+                        <strong>Review Pending Approval</strong>
+                        <p class="mb-1">{{ user_pending_review.review_text }}</p>
+                        <small class="text-muted">Submitted on {{ user_pending_review.review_date }}</small>
+                    </div>
+                {% endif %}
+                <!-- Review button logic -->
                 {% if user.is_authenticated %}
                     {% if user_orders_with_product %}
                         {% for order in user_orders_with_product %}
                             {% if order.id in reviewed_order_ids %}
-                                <p>Order {{ order.order_number }} — Already reviewed</p>
+                                <p class="text-muted font-italic">You have already reviewed this product.</p>
                             {% else %}
-                                <!-- Check if there is a history of previous order linked to product -->
-                                {% if order.id and product_id %}
-                                    <!-- <a href="{% url 'review_product' order.id product_id %}" class="btn btn-primary">
-                                        Review order {{ order.order_number }}
-                                    </a> -->
-                                    <a class="btn btn-outline-black rounded-0" href="{% url 'review_product' order.id product_id %}">
-                                        Review order
-                                    </a>
-                                {% else %}
-                                     <p> Oops! You must purchase this product to leave a review.</p>
-                                {% endif %}
+                                <a class="btn btn-outline-black rounded-0" href="{% url 'review_product' order.id product_id %}">
+                                    Review order
+                                </a>
                             {% endif %}
-                            {% empty %}
-                                 <p>You haven't purchased this product yet.</p>
+                        {% empty %}
+                            <p>You haven't purchased this product yet.</p>
                         {% endfor %}
                     {% else %}
                         <p>You haven't purchased this product yet.</p>
                     {% endif %}
                 {% else %}
-                    <p><a href="{% url 'account_login' %}">Log in</a> to leave a review.</p>
+                    <p>
+                        <a href="{% url 'account_login' %}">Log in</a> to leave a review.
+                    </p>
                 {% endif %}
             </div>
         </div>

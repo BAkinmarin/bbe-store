@@ -24,7 +24,10 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(
+        'Category', null=True, blank=True,
+        on_delete=models.SET_NULL
+    )
     sku = models.CharField(max_length=254, null=True, blank=True, unique=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
@@ -43,15 +46,26 @@ class Product(models.Model):
         return self.reviews.count()
 
     def update_rating(self):
-        avg_rating = self.reviews.aggregate(models.Avg('rating'))['rating__avg']
+        avg_rating = self.reviews.aggregate(
+            models.Avg('rating'))['rating__avg']
         self.rating = avg_rating if avg_rating else 0.0
         self.save(update_fields=["rating"])
 
 
 class Review(models.Model):
-    product = models.ForeignKey("products.Product", on_delete=models.CASCADE, related_name="reviews")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=True, related_name="reviews")
-    order = models.ForeignKey("checkout.Order", on_delete=models.CASCADE, null=False, blank=True, related_name="reviews")
+    product = models.ForeignKey(
+        "products.Product",
+        on_delete=models.CASCADE, related_name="reviews"
+    )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        null=False, blank=True, related_name="reviews"
+    )
+    order = models.ForeignKey(
+        "checkout.Order",
+        on_delete=models.CASCADE, null=False,
+        blank=True, related_name="reviews"
+    )
     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     review_text = models.TextField()
     review_date = models.DateField(auto_now_add=True)
@@ -80,21 +94,3 @@ class Review(models.Model):
 
         super().save(*args, **kwargs)
         self.product.update_rating()
-
-
-# class Review(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
-#     customer_name = models.CharField(max_length=254)
-#     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
-#     review_text = models.TextField()
-#     review_date = models.DateField(auto_now_add=True)
-
-#     class Meta:
-#         ordering = ["-review_date"]
-
-#     def __str__(self):
-#         return f"{self.customer_name} - {self.product.name} ({self.rating}/5)"
-
-#     def save(self, *args, **kwargs):
-#         super().save(*args, **kwargs)
-#         self.product.update_rating()

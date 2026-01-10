@@ -36,13 +36,31 @@ class ReviewAdmin(admin.ModelAdmin):
         'is_approved',
         'admin_response_short',
     )
-    list_filter = ("is_approved", "rating", "review_date", "product")
-    search_fields = ("user__username", "product__name", "review_text", "admin_response")
-    readonly_fields = ("review_date", "admin_response_date")
+    list_filter = (
+        'is_approved',
+        'rating',
+        'review_date',
+        'product'
+    )
+    search_fields = (
+        'user__username',
+        'product__name',
+        'review_text',
+        'admin_response',
+    )
+    readonly_fields = (
+        'review_date',
+        'admin_response_date',
+        'product',
+        'user',
+        'order',
+    )
 
     fieldsets = (
         ("Review Details", {
-            "fields": ("product", "user", "order", "rating", "review_text", "review_date")
+            "fields":
+            ('product', 'user', 'order',
+             'rating', 'review_text', 'review_date')
         }),
         ("Moderation", {
             "fields": ("is_approved",)
@@ -51,6 +69,12 @@ class ReviewAdmin(admin.ModelAdmin):
             "fields": ("admin_response", "admin_response_date")
         }),
     )
+
+    # Add functionality for bulk approvals
+    actions = ['approve_reviews']
+
+    def approve_reviews(self, request, queryset):
+        queryset.update(is_approved=True)
 
     def admin_response_short(self, obj):
         if obj.admin_response:
