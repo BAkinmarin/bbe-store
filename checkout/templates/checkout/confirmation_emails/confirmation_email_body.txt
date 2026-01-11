@@ -1,0 +1,25 @@
+Hello {{ order.full_name }}!
+
+Thank you for your purchase!
+
+As we speak, your order is being carefully considered by our dedicated team of specialist whipping experts, who wil determine the best possible way to whip up your order.
+
+Once they are satisfied that your order has been perfectly whipped, they will hand over to our dedicated team of specialist shipping experts, who will determine the best route to bring this to your door.
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Total: ${{ order.order_total }}
+Delivery: ${{ order.delivery_cost }}
+Grand Total: ${{ order.grand_total }}
+
+Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+
+We've got your phone number on file as {{ order.phone_number }}.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order!
+
+Warm wishes,
+BBE Store Team

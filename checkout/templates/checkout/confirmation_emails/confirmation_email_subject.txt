@@ -1,0 +1,1 @@
+BBE Store - Congratulations! Order: {{ order.order_number }} is Confirmed!
