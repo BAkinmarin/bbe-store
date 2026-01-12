@@ -9,6 +9,12 @@ body {
     color: #0C1618;
 }
 
+.my-1, .mb-1 {
+    margin-top: none;
+    margin-bottom: none;
+}
+
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -69,6 +75,7 @@ body {
 .text-white {
     color: #FDFBED !important;
     font-weight: 600;
+    font-size: 3rem;
 }
 
 .border-black {
@@ -120,6 +127,7 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
+
 /* ------------------------------- Bootstrap Toasts styles */
 
 .message-container {
@@ -137,6 +145,7 @@ a.category-badge > span.badge:hover {
     height: 2px;
 }
 
+
 /* Inspired by CI's Boutique Ado; from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 
 .arrow-up {
@@ -149,6 +158,7 @@ a.category-badge > span.badge:hover {
     top: -10px;
     right: 36px;
 }
+
 
 /* Convenience classes - colors from Bootstrap CSS */
 .arrow-primary {
@@ -189,6 +199,7 @@ a.category-badge > span.badge:hover {
     overflow-y: auto;
 }
 
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -213,6 +224,7 @@ a.category-badge > span.badge:hover {
     }
 }
 
+
 /* Push down body when navbar is collapsed on mobile devices */
 @media (max-width: 991px) {
     .header-container {
@@ -221,7 +233,15 @@ a.category-badge > span.badge:hover {
 
     body {
         height: calc(100vh - 142px);
-        /* height: calc(100vh - 116px); */
+        line-height: 1.25rem;
+    }
+
+    h2 {
+        margin-top: 3.25rem;
+    }
+
+    h3 {
+        margin-top: 3.25rem;
     }
 
     /* Push down sort selector */
@@ -236,4 +256,39 @@ a.category-badge > span.badge:hover {
     .btn:not(:disabled):not(.disabled) {
     text-align: center;
     }
+}
+
+/* Inspired by CI's Boutique Ado */
+
+/* Product Admin forms for adding and modifying a product */
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0;
+    border-color: #dc3545;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 0;
+}
+
+/* Mail Chimp */
+#mc_embed_signup {
+    padding: 0;
 }
