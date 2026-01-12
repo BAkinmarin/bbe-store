@@ -179,7 +179,7 @@
 <footer class="py-2 mt-4">
   <div class="container text-center">
 
-    <h4 class="logo-font mb-3 bg-black text-white">Join Our Community</h4>
+    <h5 class="text-uppercase mb-3 bg-black text-white">Join Our Community</h5>
 
     <div class="row">
 
@@ -260,7 +260,6 @@
 </footer>
 {% endif %}
     </div>
-
     <!-- Mail Chimp Script-->
      <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='COMPANY';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);
     // SMS Phone Multi-Country Functionality
@@ -700,6 +699,17 @@
         initializeSmsPhoneDropdown(fieldName);
       });
     });
+    </script>
+
+    <!-- Loading Overlay Auto Trigger JS -->
+    <script>
+      window.addEventListener("load", function () {
+        const overlay = document.getElementById("loading-overlay");
+        overlay.classList.add("hidden");
+        setTimeout(() => {
+          overlay.remove();
+        }, 600);
+      });
     </script>
     </div>
 </body>

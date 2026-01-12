@@ -108,6 +108,7 @@
                         
                         <!-- Used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
                     <div class="submit-button text-center mt-2 mb-2">
                         <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0">
@@ -134,11 +135,9 @@
         </div>
     </div>
     <div id="loading-overlay">
-        <h1 class="text-light logo-font loading-spinner">
-            <span class="icon">
-                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-            </span>
-        </h1>
+        <div class="loading-spinner">
+            <i class="fas fa-sync-alt fa-spin fa-3x loading-icon"></i>
+        </div>
     </div>
 {% endblock %}
 
