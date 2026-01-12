@@ -287,3 +287,12 @@ a.category-badge > span.badge:hover {
     border-color: #dc3545;
     border-radius: 0;
 }
+
+/* Mail Chimp */
+#mc_embed_signup {
+    background: #fff;
+    false;
+    clear: left;
+    font: 14px Helvetica, Arial, sans-serif;
+    width: 600px;
+}
