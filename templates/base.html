@@ -84,12 +84,19 @@
                             aria-expanded="false" aria-label="{% if request.user.is_authenticated %}Profile{% else %}My Account{% endif %}">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg" aria-hidden="true"></i></div>
-                                <p class="my-0">
+                                <!-- <p class="my-0">
                                     {% if request.user.is_authenticated %}
                                     {{ user }}
                                     {% else %}
                                     My Account
                                     {% endif %}
+                                </p> -->
+                                <p class="my-0">
+                                  {% if request.user.is_authenticated %}
+                                  <span class="nav-username">{{ user }}</span>
+                                  {% else %}
+                                  My Account
+                                  {% endif %}
                                 </p>
                             </div>
                         </a>
@@ -178,11 +185,8 @@
 {% if not request.path == '/' %}
 <footer class="py-2 mt-4">
   <div class="container text-center">
-
-    <h5 class="text-uppercase mb-3 bg-black text-white">Join Our Community</h5>
-
+    <hr>
     <div class="row">
-
       <!-- Socials -->
       <div class="col-12 col-md-6 mb-3 mb-md-0">
         <h5 class="text-uppercase mb-1">BBE™ Social</h5>
