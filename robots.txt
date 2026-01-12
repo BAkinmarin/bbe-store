@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: https://bbe-ecommerce-store-92b8a29d8b51.herokuapp.com/sitemap.xml
