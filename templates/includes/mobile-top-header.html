@@ -32,7 +32,8 @@
             <div><i class="fas fa-user fa-lg"></i></div>
             <p class="my-0">
                 {% if request.user.is_authenticated %}
-                {{ user }}
+                <!-- Restrict character to max 3 when logged in -->
+                <span class="d-inline d-sm-none">{{ user.username|slice:":3" }}…</span>
                 {% else %}
                 Account
                 {% endif %}

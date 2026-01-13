@@ -84,13 +84,6 @@
                             aria-expanded="false" aria-label="{% if request.user.is_authenticated %}Profile{% else %}My Account{% endif %}">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg" aria-hidden="true"></i></div>
-                                <!-- <p class="my-0">
-                                    {% if request.user.is_authenticated %}
-                                    {{ user }}
-                                    {% else %}
-                                    My Account
-                                    {% endif %}
-                                </p> -->
                                 <p class="my-0">
                                   {% if request.user.is_authenticated %}
                                   <span class="nav-username">{{ user }}</span>

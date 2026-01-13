@@ -258,17 +258,6 @@ a.category-badge > span.badge:hover {
     }
 }
 
-/* Restrict text to first 3 characters of username on smaller screens */
-@media (max-width: 576px) {
-    .nav-username {
-        display: inline-block;
-        max-width: 3ch;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        vertical-align: middle;
-    }
-}
 
 /* Inspired by CI's Boutique Ado */
 
