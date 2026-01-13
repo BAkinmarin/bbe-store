@@ -9,8 +9,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Handmade Vegan Organic Ethically Sourced Mositurising Body Butter for All Skin Types">
-    <meta name="keywords" content="organic, vegan, ethically sourced, handmade, bodycare, moisturiser, body butter, united kingdom">
+    <meta name="description" content="Handmade Vegan Organic Ethical Sustainable Mosituriser Body Butter for All Skin Types">
+    <meta name="keywords" content="organic, vegan, ethical, sustainable, handmade, bodycare, moisturiser, body butter, cocoa butter, shea butter, glowing skin, dry skin relief, united kingdom">
     {% endblock %}
 
     {% block extra_meta %}
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{% static 'favicon/favicon.ico' %}"/>
+    <link rel="icon" type="image/png" href="{% static 'favicon/favicon.ico' %}">
 
     <!-- Mail Chimp -->
     <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
@@ -93,7 +93,7 @@
                                 </p>
                             </div>
                         </a>
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                        <div class="dropdown-menu border-0" aria-label="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                 <a href="{% url 'add_product' %}" class="dropdown-item">Inventory Management</a>

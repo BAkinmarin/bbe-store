@@ -70,7 +70,7 @@
 
 [Back to Top](#automated-testing)
 
-### Lighthouse scores
+### Automated Testing
 
 - **Jest**: A JavaScript testing framework used for unit and integration tests.
 - **Django Test Framework**: The built-in testing framework for Django applications.
