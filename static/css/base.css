@@ -10,8 +10,8 @@ body {
 }
 
 .my-1, .mb-1 {
-    margin-top: none;
-    margin-bottom: none;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 
