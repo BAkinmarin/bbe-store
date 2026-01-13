@@ -109,9 +109,10 @@
                         <!-- Display admin response to shopper reviews -->
                         {% if review.admin_response %}
                         <div class="admin-response">
-                            <strong>Store Response:</strong>
-                            <p>{{ review.admin_response }}</p>
-                            <small>Responded on {{ review.admin_response_date|date:"j M Y" }}</small>
+                            <strong>Admin</strong>
+                            <p class="text-justify"> {{ review.admin_response }}<br>
+                                <small class="text-muted font-italic"> - {{ review.admin_response_date|date:"j M Y" }}</small>
+                            </p>
                         </div>
                         {% endif %}
                     {% endfor %}
