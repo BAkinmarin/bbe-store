@@ -41,6 +41,6 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
   {% endif %}
-  <button class="primaryAction btn btn-outline-black rounded-0" type="submit">{% trans "Sign In" %}</button>
+  <button class="primaryAction btn btn-outline-black rounded-0" type="submit" aria-label="signin">{% trans "Sign In" %}</button>
 </form>
 {% endblock %}

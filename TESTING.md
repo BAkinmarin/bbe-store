@@ -7,7 +7,7 @@
 
 [Manual Testing](#manual-testing)
 
-<!--## Automated Testing
+## Automated Testing
 
 - **HTML Validation**: Used the [W3C HTML Validator](https://validator.w3.org/) which returned the following results:
   <div style="text-align: center; margin: 10px 0;">
@@ -21,10 +21,10 @@
 
 - **JavaScript Validation**: Used [JSHint](https://jshint.com/) to validate JavaScript code. The validation process returned a clean report compliant with ES6+ standards.
 
-<!-- ### Code Validation
+### Code Validation
 
-#### CSS -->
-<!--<img src="" alt="CSS Validation Result" style="width: 100%;"><br>
+#### CSS
+<img src="" alt="CSS Validation Result" style="width: 100%;"><br>
 
 #### HTML
 <img src="" alt="HTML Validation Result" style="width: 100%;"><br>
@@ -36,7 +36,7 @@
 
 ### Google Lighthouse
 #### Landing Page
-<img src="" alt="Landing Page Lighthouse Result" style="width: 100%;"><br>
+<img src="images/bbe-lighthouse-testing-desktop.png" alt="Landing Page Lighthouse Result" style="width: 100%;"><br>
 
 #### Sign Up Page
 <img src="" alt="Signup Page Lighthouse Result" style="width: 100%;"><br>
@@ -66,7 +66,7 @@
 <img src="" alt="New Arrivals Page Lighthouse Result" style="width: 100%;"><br>
 
 #### Checkout Page
-<img src="" alt="Checkout Page Lighthouse Result" style="width: 100%;"><br>-->
+<img src="" alt="Checkout Page Lighthouse Result" style="width: 100%;"><br>
 
 [Back to Top](#automated-testing)
 
