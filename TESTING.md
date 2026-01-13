@@ -119,9 +119,9 @@ python3 manage.py test
 
 ## Manual Testing
 
-<!--### User Testing - Manual
+### User Testing
 
-<!--<details>
+<details>
     <summary>Experience</summary>
     <div style="display: flex; justify-content: center;">
         <div style="overflow-x: auto; width: 80%;">
@@ -147,7 +147,7 @@ python3 manage.py test
                     <td>Pass</td>
                 </tr>
                 <tr>
-                    <td>Shopper when logged in, can delete previous review</td>
+                    <td>Shopper when logged in, can see product review submissions pending approval</td>
                     <td>Pass</td>
                     <td>Pass</td>
                 </tr>
@@ -157,7 +157,7 @@ python3 manage.py test
                     <td>Pass</td>
                 </tr>
                 <tr>
-                    <td>Shopper if not logged in, cannot leave a product review</td>
+                    <td>Shopper if not logged in, and has no previous purchase, cannot leave a product review</td>
                     <td>Pass</td>
                     <td>Pass</td>
                 </tr>
@@ -179,9 +179,9 @@ python3 manage.py test
             </table>
         </div>
     </div>
-</details>->>
+</details>
 
-<!--<details>
+<details>
     <summary>Navigation</summary>
     <div style="display: flex; justify-content: center;">
         <div style="overflow-x: auto; width: 80%;">
@@ -199,22 +199,22 @@ python3 manage.py test
                 <tr>
                     <td>Navigation links lead to their intended pages</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper is made aware via navigation links where they are on the website</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper can signup for an account to keep track of past purchases</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper can navigate to Home Page at any time by clicking Logo or Home </td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
             </table>
         </div>
@@ -234,22 +234,27 @@ python3 manage.py test
                 <tr>
                     <td>Shopper can create an account on the website</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper can login to existing account</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
+                </tr>
+                <tr>
+                    <td>Shopper can successfully request password reset</td>
+                    <td>Pass</td>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper is informed once account has successfully been created</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper can view past purchases under 'My Account'</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
             </table>
         </div>
@@ -267,17 +272,22 @@ python3 manage.py test
                     <th>Outcome</th>
                 </tr>
                 <tr>
-                    <td>Home, about, register and login pages display correctly on mobiles and tablets (769px and lower)</td>
+                    <td>Home, signup, login, profile and product pages display correctly on mobiles and tablets (769px and lower)</td>
                     <td>Pass</td>
                     <td>Pass</td>
                 </tr>
                 <tr>
-                    <td>Home, about, register, and login pages display correctly on laptops and desktops (992px and higher - up to 1200px)</td>
+                    <td>Home, signup, login, profile and product pages display correctly on laptops and desktops (992px and higher - up to 1200px)</td>
                     <td>Pass</td>
                     <td>Pass</td>
                 </tr>
                 <tr>
                     <td>Content is layered when viewed on smaller devices</td>
+                    <td>Pass</td>
+                    <td>Pass</td>
+                </tr>
+                <tr>
+                    <td>Username displayed in shortened on smaller devices</td>
                     <td>Pass</td>
                     <td>Pass</td>
                 </tr>
