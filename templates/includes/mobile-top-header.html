@@ -16,7 +16,7 @@
                 <p class="my-0">Search</p>
             </div>
         </a>
-        <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
+        <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search" role="button">
             <form action="{% url 'products' %}" class="form" method="GET">
                 <div class="input-group w-100">
                     <input type="text" class="form-control border border-black rounded-0" name="q" placeholder="Search">
@@ -44,7 +44,7 @@
                 </p>
             </div>
         </a>
-        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+        <div class="dropdown-menu border-0" aria-labelledby="user-options" role="button">
             {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
             <a href="{% url 'add_product' %}" class="dropdown-item">Inventory</a>
