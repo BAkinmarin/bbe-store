@@ -7,66 +7,25 @@
 
 [Manual Testing](#manual-testing)
 
-## Automated Testing
+### Code Validation
 
 - **HTML Validation**: Used the [W3C HTML Validator](https://validator.w3.org/) which returned the following results:
   <div style="text-align: center; margin: 10px 0;">
-      <img src="images_documentation/lighthouse_scores/html_validator.png" alt="HTML Validator Results" style="max-width: 50%; height: auto;">
+      <img src="" alt="HTML Validator Results" style="max-width: 50%; height: auto;">
   </div>
 
 - **CSS Validation**: Used the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) which returned the following results:
   <div style="text-align: center; margin: 10px 0;">
-      <img src="images_documentation/lighthouse_scores/css_validator.png" alt="CSS Validator Results" style="max-width: 50%; height: auto;">
+      <img src="" alt="CSS Validator Results" style="max-width: 50%; height: auto;">
   </div>
 
 - **JavaScript Validation**: Used [JSHint](https://jshint.com/) to validate JavaScript code. The validation process returned a clean report compliant with ES6+ standards.
 
-### Code Validation
-
-#### CSS
-<img src="" alt="CSS Validation Result" style="width: 100%;"><br>
-
-#### HTML
-<img src="" alt="HTML Validation Result" style="width: 100%;"><br>
-
-#### Python
-<img src="" alt="Python Validation Result" style="width: 100%;"><br>
 
 [Back to Top](#ux)
 
 ### Google Lighthouse
-#### Landing Page
 <img src="images/bbe-lighthouse-testing-desktop.png" alt="Landing Page Lighthouse Result" style="width: 100%;"><br>
-
-#### Sign Up Page
-<img src="" alt="Signup Page Lighthouse Result" style="width: 100%;"><br>
-
-#### Login Page
-<img src="" alt="Login Page Lighthouse Result" style="width: 100%;"><br>
-
-#### About Page
-<img src="" alt="About Page Lighthouse Result" style="width: 100%;"><br>
-
-#### Search Page
-<img src="" alt="About Page Lighthouse Result" style="width: 100%;"><br>
-
-#### Account Page
-<img src="" alt="My Account Page Lighthouse Result" style="width: 100%;"><br>
-
-#### All Products Page
-<img src="" alt="All Products Page Lighthouse Result" style="width: 100%;"><br>
-
-#### Body Scrubs Page
-<img src="" alt="Body Scrubs Page Lighthouse Result" style="width: 100%;"><br>
-
-#### Body Butters Page
-<img src="" alt="Body Butters Page Lighthouse Result" style="width: 100%;"><br>
-
-#### New Arrivals Page
-<img src="" alt="New Arrivals Page Lighthouse Result" style="width: 100%;"><br>
-
-#### Checkout Page
-<img src="" alt="Checkout Page Lighthouse Result" style="width: 100%;"><br>
 
 [Back to Top](#automated-testing)
 
@@ -93,29 +52,12 @@ npm test
 python3 manage.py test
 ```
 
-- **JavaScript Testing**: The JavaScript tests returned the following results:
-  <!-- <div style="text-align: center; margin: 10px 0;">
-      <img src="images_documentation/lighthouse_scores/js_tests.png" alt="JavaScript Tests Results" style="max-width: 50%; height: auto; margin: 0 10px;">
-  </div> -->
-
-<!-- - **Django Testing**: The Django tests for the application returned the following results:
-
-<table style="width: 100%; margin: 20px 0; border-collapse: collapse; text-align: center;">
-    <tr>
-        <td>
-            <h2>Bar App Tests</h2>
-            <img src="images_documentation/lighthouse_scores/bar_app_tests.png" 
-                 alt="Bar App Test Results" 
-                 style="max-width: 50%; height: auto; margin: 10px 0;">
-        </td>
-        <td>
-            <h2>Testimonial App Tests</h2>
-            <img src="images_documentation/lighthouse_scores/testimonial_app_tests.png" 
-                 alt="Testimonial App Test Results" 
-                 style="max-width: 50%; height: auto; margin: 10px 0;">
-        </td>
-    </tr>
-</table> -->
+#### Stripe Payment
+To test Stripe payment, use the following details:
+- Card number - 4242 4242 4242 4242
+- CVC - any 3 digit number
+- Postal Code - any 5 digit number
+- Expiry date - any future date
 
 ## Manual Testing
 
@@ -297,46 +239,6 @@ python3 manage.py test
 </details>
 
 <details>
-    <summary>Experience</summary>
-    <div style="display: flex; justify-content: center;">
-        <div style="overflow-x: auto; width: 80%;">
-            <table style="margin: 0 auto; border-collapse: collapse; width: 100%;">
-                <tr>
-                    <th>Test</th>
-                    <th>Expectation</th>
-                    <th>Outcome</th>
-                </tr>
-                <tr>
-                    <td>Shopper can click a product to view full details</td>
-                    <td>Pass</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td>Shopper when logged in and previously purchased a product can leave a review</td>
-                    <td>Pass</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td>Shopper whether logged in or not cannot delete previous review</td>
-                    <td>Pass</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td>Shoppers when logged in can view purchase history</td>
-                    <td>Pass</td>
-                    <td>...</td>
-                </tr>
-                <tr>
-                    <td>Shopper receives message to confirm status of all activities on site</td>
-                    <td>Pass</td>
-                    <td>...</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</details>
-
-<details>
     <summary>Authentication</summary>
     <div style="display: flex; justify-content: center;">
         <div style="overflow-x: auto; width: 80%;">
@@ -349,36 +251,44 @@ python3 manage.py test
                 <tr>
                     <td>Shopper can create an account on website</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper is sent link to validate email when attempting to create an account on website</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper can login to existing account</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper is informed once account has successfully been created</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
                 </tr>
                 <tr>
                     <td>Shopper is unable to leave review on unauthorised purchase</td>
                     <td>Pass</td>
-                    <th>...</th>
+                    <th>Pass</th>
+                </tr>
+                <tr>
+                    <td>Shopper is able to leave review on authorised purchase</td>
+                    <td>Pass</td>
+                    <th>Pass</th>
+                </tr>
+                <tr>
+                    <td>Shopper can see authorised reviews of previous purchases</td>
+                    <td>Pass</td>
+                    <th>Pass</th>
+                </tr>
+                <tr>
+                    <td>Shopper can see pending reviews of previous purchases</td>
+                    <td>Pass</td>
+                    <th>Pass</th>
                 </tr>
             </table>
         </div>
     </div>
-</details>-->
-
-#### Stripe Payment
-To test Stripe payment, use the following details:
-- Card number - 4242 4242 4242 4242
-- CVC - any 3 digit number
-- Postal Code - any 5 digit number
-- Expiry date - any future date
+</details>

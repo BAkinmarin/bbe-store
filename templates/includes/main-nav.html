@@ -1,10 +1,10 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto ms-auto">
         <li class="nav-item dropdown">
-            <a href="#" class="logo-font font-weight-bold nav-link text-black mr-5" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+            <a href="#" class="logo-font font-weight-bold nav-link text-black mr-5" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link" role="button">
+            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item">By Rating</a>
                 <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item">By Category</a>
@@ -13,10 +13,10 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a href="#" class="logo-font font-weight-bold nav-link text-block mr-5" id="body-scrubs-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+            <a href="#" class="logo-font font-weight-bold nav-link text-block mr-5" id="body-scrubs-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Body Scrubs
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="body-scrubs-link" role="button">
+            <div class="dropdown-menu border-0" aria-labelledby="body-scrubs-link" >
                 <a href="{% url 'products' %}?category=sensitive" class="dropdown-item">Sensitive</a>
                 <a href="{% url 'products' %}?category=exfoliating" class="dropdown-item">Exfoliating</a>
                 <a href="{% url 'products' %}?category=moisturising" class="dropdown-item">Moisturising</a>
@@ -25,10 +25,10 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a href="#" class="logo-font font-weight-bold nav-link text-block mr-5" id="body-butters-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+            <a href="#" class="logo-font font-weight-bold nav-link text-block mr-5" id="body-butters-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Body Butters
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="body-butters-link" role="button">
+            <div class="dropdown-menu border-0" aria-labelledby="body-butters-link">
                 <a href="{% url 'products' %}?category=for_men" class="dropdown-item">For Men</a>
                 <a href="{% url 'products' %}?category=for_women" class="dropdown-item">For Women</a>
                 <a href="{% url 'products' %}?category=for_children" class="dropdown-item">For Children</a>
@@ -37,10 +37,10 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a href="#" class="logo-font font-weight-bold nav-link text-block mr-5" id="new-arrivals-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+            <a href="#" class="logo-font font-weight-bold nav-link text-block mr-5" id="new-arrivals-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 New Arrivals
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="new-arrivals-link" role="button">
+            <div class="dropdown-menu border-0" aria-labelledby="new-arrivals-link">
                 <a href="{% url 'products' %}?category=body_scrubs" class="dropdown-item">Body Scrubs</a>
                 <a href="{% url 'products' %}?category=body_butters" class="dropdown-item">Body Butters</a>
                 <a href="{% url 'products' %}?category=body_scrubs,body_butters" class="dropdown-item">All New Arrivals</a>

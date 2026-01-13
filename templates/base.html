@@ -93,7 +93,7 @@
                                 </p>
                             </div>
                         </a>
-                        <div class="dropdown-menu border-0" aria-label="user-options" role="button">
+                        <div class="dropdown-menu border-0" aria-label="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                 <a href="{% url 'add_product' %}" class="dropdown-item">Inventory Management</a>
